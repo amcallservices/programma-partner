@@ -78,10 +78,13 @@ export default async function PartnerPage({
         })}
       </div>
 
-      <div className="card flat" data-tour="how">
-        <h3>{T.howTitle}</h3>
-        <p className="muted" style={{ margin: "6px 0 0" }}>{T.howText}</p>
-      </div>
+      <aside className="how-hl" data-tour="how" role="note">
+        <span className="how-ic" aria-hidden="true">i</span>
+        <div>
+          <h3>{T.howTitle}</h3>
+          <p>{T.howText}</p>
+        </div>
+      </aside>
 
       <h2>{T.mediaTitle}</h2>
       <p className="muted" style={{ margin: "0 0 12px" }}>{T.mediaIntro}</p>
