@@ -11,11 +11,12 @@ export async function submitLead(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim().slice(0, 120);
   const email = normalizeEmail(String(formData.get("email") ?? ""));
   const consent = formData.get("consent") === "on";
+  const lang = String(formData.get("lang") ?? "") === "en" ? "en" : "it";
   const site = getSite(siteKey);
 
   if (!site) redirect("/");
   if (!email || !consent) {
-    redirect(`/go/${encodeURIComponent(code)}/${siteKey}?err=${!email ? "email" : "consenso"}`);
+    redirect(`/go/${encodeURIComponent(code)}/${siteKey}?err=${!email ? "email" : "consenso"}&lang=${lang}`);
   }
 
   const supa = db();

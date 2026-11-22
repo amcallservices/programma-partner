@@ -127,3 +127,30 @@ export const PANEL: Record<Lang, PanelText> = {
     ],
   },
 };
+
+export const LANDING = {
+  it: {
+    langLabel: "Lingua",
+    continueTo: (n: string) => `Continua verso ${n}`,
+    intro: "Inserisci la tua email: ci serve solo per riconoscere chi ti ha segnalato il sito. Poi ti portiamo subito sul sito. Usa la stessa email quando ti iscrivi o acquisti.",
+    name: "Nome (facoltativo)",
+    email: "Email",
+    consent: "Acconsento al trattamento di nome ed email per attribuire la segnalazione a chi mi ha inviato il sito. Leggi l'",
+    privacy: "informativa privacy",
+    errEmail: "Inserisci un indirizzo email valido.",
+    errConsent: "Per continuare serve il consenso.",
+    go: (n: string) => `Vai a ${n}`,
+  },
+  en: {
+    langLabel: "Language",
+    continueTo: (n: string) => `Continue to ${n}`,
+    intro: "Enter your email: we only need it to know who recommended the site to you. Then we take you straight to the site. Use the same email when you sign up or buy.",
+    name: "Name (optional)",
+    email: "Email",
+    consent: "I agree to the processing of my name and email to credit the referral to the person who sent me the site. Read the ",
+    privacy: "privacy notice",
+    errEmail: "Enter a valid email address.",
+    errConsent: "Your consent is required to continue.",
+    go: (n: string) => `Go to ${n}`,
+  },
+};
