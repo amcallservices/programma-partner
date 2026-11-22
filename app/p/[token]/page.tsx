@@ -55,6 +55,10 @@ export default async function PartnerPage({
           <Tour steps={T.steps} ui={T.tourUi} label={T.tour} />
         </div>
       </div>
+      <section className="welcome-hl">
+        <b>{T.welcomeSlogan}</b>
+        <p>{T.welcomeText}</p>
+      </section>
       <p className="lead" style={{ marginTop: 10 }}>{T.intro(Number(partner.commission_pct))}</p>
 
       <div className="grid" data-tour="stats" style={{ marginTop: 18 }}>

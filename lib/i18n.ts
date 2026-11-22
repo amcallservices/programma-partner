@@ -43,6 +43,8 @@ export type PanelText = {
   mediaTextOnly: string;
   mediaRead: string;
   mediaClose: string;
+  welcomeSlogan: string;
+  welcomeText: string;
   waLabel: string;
   waMsg: (name: string) => string;
   salesTitle: string;
@@ -86,6 +88,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Testo",
     mediaRead: "Descrizione del post",
     mediaClose: "Chiudi",
+    welcomeSlogan: "Ogni autore che arriva da te è una storia che comincia.",
+    welcomeText: "Fai parte della nostra squadra: grazie a te sempre più persone scoprono come scrivere e pubblicare il proprio libro. Noi siamo qui per aiutarti in ogni passo.",
     waLabel: "Scrivimi su WhatsApp",
     waMsg: (n) => `Sono un partner, mi chiamo ${n}.`,
     salesTitle: "Vendite attribuite",
@@ -138,6 +142,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Text",
     mediaRead: "Post description",
     mediaClose: "Close",
+    welcomeSlogan: "Every author you bring is a story just beginning.",
+    welcomeText: "You are part of our team: thanks to you, more and more people discover how to write and publish their own book. We are here to help you every step of the way.",
     waLabel: "Message me on WhatsApp",
     waMsg: (n) => `I am a partner, my name is ${n}.`,
     salesTitle: "Attributed sales",

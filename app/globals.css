@@ -261,3 +261,7 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 
 .btn.wa { background: #1fa855; border-color: #1fa855; color: #fff; text-decoration: none; }
 .btn.wa:hover { background: #178a45; }
+
+.welcome-hl { margin: 14px 0 6px; padding: 16px 20px; border-radius: 14px; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--lib); }
+.welcome-hl b { display: block; font-family: var(--font-serif, Literata, Georgia, serif); font-size: 21px; line-height: 1.3; color: var(--ink); }
+.welcome-hl p { margin: 6px 0 0; color: #3b3f63; max-width: 70ch; }
