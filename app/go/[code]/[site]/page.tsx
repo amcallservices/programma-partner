@@ -39,6 +39,16 @@ export default async function Landing({
 
   return (
     <div className="stage">
+    <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: COVER[site.key] ?? site.color }}>
+      <iframe
+        src={site.key === "soft" ? `${site.url}?embed=true` : site.url}
+        title=""
+        tabIndex={-1}
+        loading="eager"
+        referrerPolicy="no-referrer"
+        {...({ inert: "" } as object)}
+      />
+    </div>
     <Glow />
     <div className="entry" data-glow style={{ ["--c" as string]: COVER[site.key] ?? site.color, ["--glow" as string]: LIGHT[site.key] }}>
       <div className="entry-top"><span className="entry-brand">Self Publishing</span><LangSwitch lang={lang} label={L.langLabel} /></div>
