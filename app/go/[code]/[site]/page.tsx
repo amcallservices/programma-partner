@@ -5,6 +5,10 @@ import { db } from "@/lib/supabase";
 import { getSite, SITE_EN } from "@/lib/sites";
 import { LANDING, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../../LangSwitch";
+import Glow from "../../../Glow";
+
+const COVER: Record<string, string> = { com: "#4f46c8" };
+const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
 import { submitLead } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -34,8 +38,10 @@ export default async function Landing({
   await supa.from("clicks").insert({ partner_id: partner.id, site_key: site.key });
 
   return (
-    <div className="entry" style={{ ["--c" as string]: site.color }}>
-      <div style={{ gridColumn: "1 / -1", textAlign: "right" }}><LangSwitch lang={lang} label={L.langLabel} /></div>
+    <div className="stage">
+    <Glow />
+    <div className="entry" data-glow style={{ ["--c" as string]: COVER[site.key] ?? site.color, ["--glow" as string]: LIGHT[site.key] }}>
+      <div className="entry-top"><span className="entry-brand">Self Publishing</span><LangSwitch lang={lang} label={L.langLabel} /></div>
       <div className="book">
         <div className="name">{site.name}</div>
         <h1>{txt.headline}</h1>
@@ -67,9 +73,16 @@ export default async function Landing({
         {searchParams.err === "email" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>{L.errEmail}</p>}
         {searchParams.err === "consenso" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>{L.errConsent}</p>}
         <p style={{ marginTop: 18, marginBottom: 0 }}>
-          <button type="submit" style={{ background: site.color, borderColor: site.color }}>{L.go(site.name)}</button>
+          <button type="submit" className="go" style={{ background: COVER[site.key] ?? site.color, borderColor: COVER[site.key] ?? site.color }}>{L.go(site.name)}</button>
         </p>
       </form>
+
+      <ol className="flow" aria-label={L.flowLabel}>
+        <li><b>1</b> {L.flow[0]}</li>
+        <li><b>2</b> {L.flow[1]}</li>
+        <li className="note">{L.note}</li>
+      </ol>
+    </div>
     </div>
   );
 }

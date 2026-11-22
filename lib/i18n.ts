@@ -140,6 +140,9 @@ export const LANDING = {
     errEmail: "Inserisci un indirizzo email valido.",
     errConsent: "Per continuare serve il consenso.",
     go: (n: string) => `Vai a ${n}`,
+    flowLabel: "Cosa succede ora",
+    flow: ["Lasci la tua email", "Arrivi sul sito"],
+    note: "In questo passaggio non paghi nulla.",
   },
   en: {
     langLabel: "Language",
@@ -152,5 +155,8 @@ export const LANDING = {
     errEmail: "Enter a valid email address.",
     errConsent: "Your consent is required to continue.",
     go: (n: string) => `Go to ${n}`,
+    flowLabel: "What happens next",
+    flow: ["You leave your email", "You reach the site"],
+    note: "There is nothing to pay at this step.",
   },
 };
