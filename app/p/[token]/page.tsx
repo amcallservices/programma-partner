@@ -83,39 +83,55 @@ export default async function PartnerPage({
       </div>
 
       <h2>{T.mediaTitle}</h2>
-      <p className="muted" style={{ margin: "0 0 10px" }}>{T.mediaIntro}</p>
+      <p className="muted" style={{ margin: "0 0 12px" }}>{T.mediaIntro}</p>
       <div data-tour="media">
+        <nav className="media-jump" aria-label={T.mediaTitle}>
+          {SITES.map((s) => {
+            const n = (promo ?? []).filter((i) => i.site_key === s.key && i.lang === lang).length;
+            return <a key={s.key} href={`#media-${s.key}`} style={{ ["--c" as string]: s.color }}><i />{s.name}<b>{n}</b></a>;
+          })}
+        </nav>
         {perSite.map((s) => {
           const link = `${base}/go/${partner.code}/${s.key}`;
-          const items = (promo ?? []).filter((i) => i.site_key === s.key && i.lang === lang);
-          const list = items;
+          const list = (promo ?? []).filter((i) => i.site_key === s.key && i.lang === lang);
           const pub = (p: string) => supa.storage.from(PROMO_BUCKET).getPublicUrl(p).data.publicUrl;
           return (
-            <div className="card media-site" key={s.key} style={{ ["--c" as string]: s.color }}>
-              <h3 style={{ borderLeft: `6px solid ${s.color}`, paddingLeft: 10 }}>{s.name}</h3>
-              {list.length === 0 && <p className="muted">{T.mediaEmpty}</p>}
-              <div className="media-grid">
-                {list.map((i) => {
-                  const file = i.file_path ? pub(i.file_path) : null;
-                  const dl = file ? `${file}?download=${encodeURIComponent(i.file_name ?? "file")}` : null;
-                  return (
-                    <article className="media-item" key={i.id}>
-                      {file && i.kind === "immagine" && <img src={file} alt={i.title} loading="lazy" />}
-                      {file && i.kind === "video" && <video src={file} controls preload="metadata" playsInline />}
-                      <div className="media-body">
-                        <b>{i.title}</b> <span className="pill">{String(i.lang).toUpperCase()}</span>
-                        {i.body && <p className="media-text">{withLink(i.body, link)}</p>}
-                        {file && i.size_bytes ? <div className="muted">{i.file_name} · {mb(i.size_bytes)}</div> : null}
-                        <div className="media-actions">
-                          {dl && <a className="btn small" href={dl} download={i.file_name ?? undefined}>{T.mediaDownload}</a>}
-                          {i.body ? <CopyButton text={withLink(i.body, link)} label={T.mediaCopyText} doneLabel={T.copied} /> : <CopyButton text={link} label={T.mediaCopyLink} doneLabel={T.copied} />}
+            <section className="msite" id={`media-${s.key}`} key={s.key} style={{ ["--c" as string]: s.color }}>
+              <header className="msite-head"><h3>{s.name}</h3><span>{list.length}</span></header>
+              {list.length === 0 ? <p className="muted msite-empty">{T.mediaEmpty}</p> : (
+                <div className="mgrid">
+                  {list.map((i) => {
+                    const file = i.file_path ? pub(i.file_path) : null;
+                    const dl = file ? `${file}?download=${encodeURIComponent(i.file_name ?? "file")}` : null;
+                    const full = i.body ? withLink(i.body, link) : null;
+                    return (
+                      <article className="mcard" key={i.id}>
+                        <div className="mthumb">
+                          {file && i.kind === "immagine" && <img src={file} alt={i.title} loading="lazy" />}
+                          {file && i.kind === "video" && <video src={file} controls preload="metadata" playsInline />}
+                          {file && i.kind === "file" && <span className="mph">PDF</span>}
+                          {!file && <span className="mph">{T.mediaTextOnly}</span>}
                         </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
+                        <div className="mbody">
+                          <h4>{i.title}</h4>
+                          {full && (
+                            <details className="mtext">
+                              <summary><span className="mclamp">{full}</span></summary>
+                              <p>{full}</p>
+                            </details>
+                          )}
+                          {file && <div className="mmeta">{i.file_name}{i.size_bytes ? ` · ${mb(i.size_bytes)}` : ""}</div>}
+                        </div>
+                        <div className="mactions">
+                          {dl && <a className="btn small" href={dl} download={i.file_name ?? undefined}>{T.mediaDownload}</a>}
+                          <CopyButton text={full ?? link} label={full ? T.mediaCopyText : T.mediaCopyLink} doneLabel={T.copied} />
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
           );
         })}
       </div>
