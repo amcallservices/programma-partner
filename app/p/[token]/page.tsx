@@ -114,12 +114,7 @@ export default async function PartnerPage({
                         </div>
                         <div className="mbody">
                           <h4>{i.title}</h4>
-                          {full && (
-                            <details className="mtext">
-                              <summary><span className="mclamp">{full}</span></summary>
-                              <p>{full}</p>
-                            </details>
-                          )}
+                          {full && <p className="mtext">{full}</p>}
                           {file && <div className="mmeta">{i.file_name}{i.size_bytes ? ` · ${mb(i.size_bytes)}` : ""}</div>}
                         </div>
                         <div className="mactions">
