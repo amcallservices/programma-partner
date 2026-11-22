@@ -273,3 +273,5 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .tip-body { padding: 0 16px 14px 34px; }
 .tip-body p { margin: 0 0 6px; }
 .tip-body ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+
+.tip-link a.nocopy { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; font-weight: 700; color: var(--c); text-decoration: underline; }

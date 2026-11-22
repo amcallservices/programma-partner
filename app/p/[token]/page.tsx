@@ -7,6 +7,7 @@ import { PANEL, dateFmt, money, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../LangSwitch";
 import CopyButton from "../../CopyButton";
 import Tour from "./Tour";
+import NoCopyLink from "./NoCopyLink";
 import Gallery, { type GItem } from "./Gallery";
 import { PROMO_BUCKET, withLink, mb } from "@/lib/promo";
 
@@ -134,6 +135,7 @@ export default async function PartnerPage({
               <summary><i />{s.name}</summary>
               <div className="tip-body">
                 <p><b>{T.tipsFor}:</b> {t.who}</p>
+                <p className="tip-link"><b>{T.tipsLink}:</b>{" "}<NoCopyLink href={`${base}/go/${partner.code}/${s.key}`}>{T.tipsOpen} {s.name}</NoCopyLink></p>
                 <ul>{t.ideas.map((x) => <li key={x}>{x}</li>)}</ul>
               </div>
             </details>

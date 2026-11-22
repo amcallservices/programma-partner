@@ -46,6 +46,8 @@ export type PanelText = {
   tipsTitle: string;
   tipsIntro: string;
   tipsFor: string;
+  tipsLink: string;
+  tipsOpen: string;
   welcomeSlogan: string;
   welcomeText: string;
   waLabel: string;
@@ -94,6 +96,8 @@ export const PANEL: Record<Lang, PanelText> = {
     tipsTitle: "Come attirare nuovi utenti",
     tipsIntro: "Qualche idea pratica per ogni sito: a chi parlare e cosa dire. Scegli quelle che senti tue e usa sempre il tuo link.",
     tipsFor: "Per chi",
+    tipsLink: "Il sito con il tuo link",
+    tipsOpen: "Apri",
     welcomeSlogan: "Dalla prima pagina al primo cliente: porta chi scrive e chi fa impresa, e cresciamo insieme.",
     welcomeText: "Fai parte della nostra squadra. Con Scrittore Site, Liberamente e la community aiuti chi vuole scrivere e pubblicare un libro; con BOOST AI porti il marketing automatizzato a professionisti e attività imprenditoriali. Puoi promuovere tutto: noi siamo qui per aiutarti in ogni passo.",
     waLabel: "Scrivimi su WhatsApp",
@@ -152,6 +156,8 @@ export const PANEL: Record<Lang, PanelText> = {
     tipsTitle: "How to attract new users",
     tipsIntro: "A few practical ideas for each site: who to talk to and what to say. Pick the ones that feel right and always use your link.",
     tipsFor: "For whom",
+    tipsLink: "The site with your link",
+    tipsOpen: "Open",
     welcomeSlogan: "From the first page to the first customer: bring those who write and those who run a business, and we grow together.",
     welcomeText: "You are part of our team. With Scrittore Site, Liberamente and the community you help people write and publish a book; with BOOST AI you bring automated marketing to professionals and businesses. You can promote it all: we are here to help you every step of the way.",
     waLabel: "Message me on WhatsApp",
