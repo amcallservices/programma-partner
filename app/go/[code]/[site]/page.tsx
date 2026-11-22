@@ -5,10 +5,8 @@ import { db } from "@/lib/supabase";
 import { getSite, SITE_EN } from "@/lib/sites";
 import { LANDING, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../../LangSwitch";
-import Glow from "../../../Glow";
 
 const COVER: Record<string, string> = { com: "#4f46c8" };
-const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
 import { submitLead } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -37,62 +35,42 @@ export default async function Landing({
   // Registra il click (anche se poi il visitatore non lascia l'email).
   await supa.from("clicks").insert({ partner_id: partner.id, site_key: site.key });
 
+  const color = COVER[site.key] ?? site.color;
   return (
     <div className="stage">
-    <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: COVER[site.key] ?? site.color }}>
-      <iframe
-        src={site.key === "soft" ? `${site.url}?embed=true` : site.url}
-        title=""
-        tabIndex={-1}
-        loading="eager"
-        referrerPolicy="no-referrer"
-        {...({ inert: "" } as object)}
-      />
-    </div>
-    <Glow />
-    <div className="entry" data-glow style={{ ["--c" as string]: COVER[site.key] ?? site.color, ["--glow" as string]: LIGHT[site.key] }}>
-      <div className="entry-top"><span className="entry-brand">Self Publishing</span><LangSwitch lang={lang} label={L.langLabel} /></div>
-      <div className="book">
-        <div className="name">{site.name}</div>
-        <h1>{txt.headline}</h1>
-        <p>{txt.pitch}</p>
-        <ul>
-          {txt.bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
+      <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: color }}>
+        <iframe
+          src={site.key === "soft" ? `${site.url}?embed=true` : site.url}
+          title=""
+          tabIndex={-1}
+          loading="eager"
+          referrerPolicy="no-referrer"
+          {...({ inert: "" } as object)}
+        />
       </div>
-
-      <form action={submitLead} className="card" style={{ margin: 0 }}>
+      <form action={submitLead} className="pop" style={{ ["--c" as string]: color }}>
         <input type="hidden" name="code" value={params.code} />
         <input type="hidden" name="site" value={site.key} />
         <input type="hidden" name="lang" value={lang} />
-        <h2 style={{ margin: 0, fontSize: 24 }}>{L.continueTo(site.name)}</h2>
-        <p className="muted" style={{ marginTop: 8 }}>{L.intro}</p>
-        <label htmlFor="name">{L.name}</label>
-        <input id="name" name="name" autoComplete="name" />
-        <label htmlFor="email">{L.email}</label>
-        <input id="email" name="email" type="email" required autoComplete="email" />
-        <label className="check" style={{ marginTop: 16 }}>
+        <div className="pop-top">
+          <span className="pop-site" style={{ color }}>{site.name}</span>
+          <LangSwitch lang={lang} label={L.langLabel} />
+        </div>
+        <h1>{L.continueTo(site.name)}</h1>
+        <p className="muted">{L.short}</p>
+        <label htmlFor="email" className="sr">{L.email}</label>
+        <input id="email" name="email" type="email" required autoComplete="email" placeholder={L.email} />
+        <label className="check" style={{ marginTop: 14 }}>
           <input type="checkbox" name="consent" required />
           <span>
             {L.consent}
             <Link href={`/privacy?lang=${lang}`} target="_blank">{L.privacy}</Link>.
           </span>
         </label>
-        {searchParams.err === "email" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>{L.errEmail}</p>}
-        {searchParams.err === "consenso" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>{L.errConsent}</p>}
-        <p style={{ marginTop: 18, marginBottom: 0 }}>
-          <button type="submit" className="go" style={{ background: COVER[site.key] ?? site.color, borderColor: COVER[site.key] ?? site.color }}>{L.go(site.name)}</button>
-        </p>
+        {searchParams.err === "email" && <p className="notice bad" role="alert" style={{ marginTop: 12 }}>{L.errEmail}</p>}
+        {searchParams.err === "consenso" && <p className="notice bad" role="alert" style={{ marginTop: 12 }}>{L.errConsent}</p>}
+        <button type="submit" className="go" style={{ background: color, borderColor: color }}>{L.go(site.name)}</button>
       </form>
-
-      <ol className="flow" aria-label={L.flowLabel}>
-        <li><b>1</b> {L.flow[0]}</li>
-        <li><b>2</b> {L.flow[1]}</li>
-        <li className="note">{L.note}</li>
-      </ol>
-    </div>
     </div>
   );
 }

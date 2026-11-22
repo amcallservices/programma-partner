@@ -146,8 +146,6 @@ details.faq p { margin: 10px 0 0; color: var(--muted); max-width: 64ch; }
 
 /* ===== Pagina d'ingresso del link ===== */
 .stage { position: relative; z-index: 1; min-height: 100vh; padding: 24px 16px; display: flex; align-items: center; justify-content: center; }
-.stage .entry { width: 100%; max-width: 900px; gap: 20px 26px; padding-top: 22px; padding-bottom: 26px; }
-/* Il sito di riferimento resta visibile ma non si può toccare: l'iframe ignora il puntatore e un velo lo sfoca. */
 .backdrop { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: linear-gradient(135deg, var(--c), var(--ink)); }
 .backdrop iframe { width: 100%; height: 100%; border: 0; pointer-events: none; user-select: none; }
 .backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(22, 19, 77, 0.22); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
@@ -205,3 +203,14 @@ dialog.confirm h3 { margin-bottom: 8px; }
   .steps .card:hover, .spine:hover { transform: none !important; }
   * { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Finestra essenziale: solo email e consenso, sopra il sito di riferimento. */
+.pop { width: 100%; max-width: 420px; background: #fff; border-radius: 16px; padding: 24px 26px 26px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6); display: grid; gap: 4px; }
+.pop-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.pop-site { font-family: var(--serif); font-weight: 700; font-size: 15px; }
+.pop h1 { font-size: 24px; }
+.pop .muted { margin: 4px 0 12px; }
+.pop input[type="email"] { margin: 0; }
+.pop .go { width: 100%; margin-top: 16px; padding: 13px 18px; font-size: 16px; }
+.pop input[type="email"]:focus { border-color: var(--c); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

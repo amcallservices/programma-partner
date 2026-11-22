@@ -132,6 +132,7 @@ export const LANDING = {
   it: {
     langLabel: "Lingua",
     continueTo: (n: string) => `Continua verso ${n}`,
+    short: "Inserisci la tua email per continuare.",
     intro: "Inserisci la tua email: ci serve solo per riconoscere chi ti ha segnalato il sito. Poi ti portiamo subito sul sito. Usa la stessa email quando ti iscrivi o acquisti.",
     name: "Nome (facoltativo)",
     email: "Email",
@@ -147,6 +148,7 @@ export const LANDING = {
   en: {
     langLabel: "Language",
     continueTo: (n: string) => `Continue to ${n}`,
+    short: "Enter your email to continue.",
     intro: "Enter your email: we only need it to know who recommended the site to you. Then we take you straight to the site. Use the same email when you sign up or buy.",
     name: "Name (optional)",
     email: "Email",
