@@ -87,9 +87,8 @@ export default async function PartnerPage({
       <div data-tour="media">
         {perSite.map((s) => {
           const link = `${base}/go/${partner.code}/${s.key}`;
-          const items = (promo ?? []).filter((i) => i.site_key === s.key && (i.lang === lang || !i.lang));
-          const all = (promo ?? []).filter((i) => i.site_key === s.key);
-          const list = items.length ? items : all;
+          const items = (promo ?? []).filter((i) => i.site_key === s.key && i.lang === lang);
+          const list = items;
           const pub = (p: string) => supa.storage.from(PROMO_BUCKET).getPublicUrl(p).data.publicUrl;
           return (
             <div className="card media-site" key={s.key} style={{ ["--c" as string]: s.color }}>
