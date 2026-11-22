@@ -34,6 +34,7 @@ export default async function PartnerPage({
 
   const mine = sales ?? [];
   const tot = (st: string) => mine.filter((s) => saleStatus(s) === st).reduce((a, s) => a + commissionCents(s), 0);
+  const buyers = new Set(mine.filter((s) => saleStatus(s) !== "annullata" && s.email).map((s) => String(s.email).toLowerCase()));
   const base = (process.env.APP_URL || "").replace(/\/$/, "");
   const perSite = SITES.map((s) => ({
     ...s,
@@ -77,6 +78,25 @@ export default async function PartnerPage({
       <div className="card flat" data-tour="how">
         <h3>{T.howTitle}</h3>
         <p className="muted" style={{ margin: "6px 0 0" }}>{T.howText}</p>
+      </div>
+
+      <h2>{T.contactsTitle} ({(leads ?? []).length})</h2>
+      <p className="muted" style={{ margin: "0 0 10px" }}>{T.contactsIntro}</p>
+      <div className="scroll" data-tour="contacts">
+        <table>
+          <thead><tr>{T.contactsCols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
+          <tbody>
+            {(leads ?? []).map((l) => (
+              <tr key={l.id}>
+                <td>{dateFmt(l.created_at, lang)}</td>
+                <td>{SITES.find((x) => x.key === l.site_key)?.name ?? l.site_key}</td>
+                <td>{maskEmail(l.email)}</td>
+                <td>{buyers.has(String(l.email).toLowerCase()) ? T.contactsBought.yes : T.contactsBought.no}</td>
+              </tr>
+            ))}
+            {(leads ?? []).length === 0 && <tr><td colSpan={4} className="muted">{T.contactsEmpty}</td></tr>}
+          </tbody>
+        </table>
       </div>
 
       <h2>{T.salesTitle}</h2>
