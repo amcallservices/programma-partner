@@ -45,6 +45,7 @@ export type PanelText = {
   mediaClose: string;
   tipsTitle: string;
   tipsIntro: string;
+  linksNote: string;
   tipsFor: string;
   tipsLink: string;
   tipsOpen: string;
@@ -95,6 +96,7 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaClose: "Chiudi",
     tipsTitle: "Come attirare nuovi utenti",
     tipsIntro: "Qualche idea pratica per ogni sito: a chi parlare e cosa dire. Scegli quelle che senti tue e usa sempre il tuo link.",
+    linksNote: "Guadagni solo con questi link, non usarne altri (salvo quelli dei post creati da noi, in quanto sono già incorporati).",
     tipsFor: "Per chi",
     tipsLink: "Il sito con il tuo link",
     tipsOpen: "Apri",
@@ -155,6 +157,7 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaClose: "Close",
     tipsTitle: "How to attract new users",
     tipsIntro: "A few practical ideas for each site: who to talk to and what to say. Pick the ones that feel right and always use your link.",
+    linksNote: "You earn only with these links, do not use any others (except those in the posts we created, since they are already built in).",
     tipsFor: "For whom",
     tipsLink: "The site with your link",
     tipsOpen: "Open",

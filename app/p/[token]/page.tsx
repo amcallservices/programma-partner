@@ -69,7 +69,10 @@ export default async function PartnerPage({
         <div className="card stat" style={{ ["--stat" as string]: "var(--boost)", margin: 0 }}><span>{T.stats.sales}</span><b>{mine.filter((s) => saleStatus(s) !== "annullata").length}</b></div>
       </div>
 
-      <h2>{T.links}</h2>
+      <div className="links-head">
+        <h2>{T.links}</h2>
+        <p className="links-note" role="note">{T.linksNote}</p>
+      </div>
       <div className="card" data-tour="links" style={{ paddingTop: 8, paddingBottom: 8 }}>
         {perSite.map((s) => {
           const url = `${base}/go/${partner.code}/${s.key}`;

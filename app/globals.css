@@ -275,3 +275,7 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .tip-body ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
 
 .tip-link a.nocopy { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; font-weight: 700; color: var(--c); text-decoration: underline; }
+
+.links-head { display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; margin-top: 8px; }
+.links-head h2 { margin: 0; }
+.links-note { margin: 0; flex: 1 1 280px; font-size: 14px; font-weight: 700; color: #7c2d12; background: #fff7ed; border: 1px solid #fdba74; border-radius: 8px; padding: 7px 12px; }
