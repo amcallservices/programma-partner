@@ -281,3 +281,4 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .links-note { margin: 0; flex: 1 1 280px; font-size: 14px; font-weight: 700; color: #7c2d12; background: #fff7ed; border: 1px solid #fdba74; border-radius: 8px; padding: 7px 12px; }
 
 .tip-warn { font-size: 13px; font-weight: 600; color: #7c2d12; background: #fff7ed; border: 1px solid #fdba74; border-radius: 8px; padding: 6px 10px; }
+.tour-pop p { white-space: pre-line; }
