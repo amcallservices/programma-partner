@@ -42,6 +42,7 @@ export type PanelText = {
   mediaCopyLink: string;
   mediaTextOnly: string;
   mediaRead: string;
+  mediaClose: string;
   salesTitle: string;
   salesCols: string[];
   salesEmpty: string;
@@ -81,7 +82,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaCopyText: "Copia testo con il mio link",
     mediaCopyLink: "Copia il mio link",
     mediaTextOnly: "Testo",
-    mediaRead: "Leggi la descrizione del post",
+    mediaRead: "Descrizione del post",
+    mediaClose: "Chiudi",
     salesTitle: "Vendite attribuite",
     salesCols: ["Data", "Cliente", "Descrizione", "Compenso", "Stato"],
     salesEmpty: "Ancora nessuna vendita.",
@@ -129,7 +131,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaCopyText: "Copy text with my link",
     mediaCopyLink: "Copy my link",
     mediaTextOnly: "Text",
-    mediaRead: "Read the post description",
+    mediaRead: "Post description",
+    mediaClose: "Close",
     salesTitle: "Attributed sales",
     salesCols: ["Date", "Customer", "Description", "Fee", "Status"],
     salesEmpty: "No sales yet.",
