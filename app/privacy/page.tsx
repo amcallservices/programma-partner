@@ -24,7 +24,7 @@ export default function Privacy({ searchParams }: { searchParams: { lang?: strin
         <p>Consent (art. 6.1.a GDPR). We keep the data for 12 months from collection, the period in which a purchase can be attributed to the partner.</p>
         <h2>Who receives it</h2>
         <p>
-          The partner who recommended the site sees your email only in partly hidden form (even if you have not bought) and sees whether a purchase is attributed to them.
+          The partner who recommended the site sees your email (even if you have not bought) and whether a purchase is attributed to them. Partners agree to use it only for this programme and not to send unsolicited commercial messages.
           Data is processed on hosting and database services (Vercel, Supabase) and compared with payments recorded on Stripe.
         </p>
         <h2>Your rights</h2>
@@ -49,7 +49,7 @@ export default function Privacy({ searchParams }: { searchParams: { lang?: strin
       <p>Consenso (art. 6.1.a GDPR). Conserviamo i dati per 12 mesi dalla raccolta, il periodo in cui un acquisto può essere attribuito al partner.</p>
       <h2>A chi sono comunicati</h2>
       <p>
-        Il partner che ti ha segnalato vede la tua email solo in forma parziale (anche se non hai acquistato) e vede se un acquisto gli è attribuito. I dati sono
+        Il partner che ti ha segnalato vede la tua email (anche se non hai acquistato) e se un acquisto gli è attribuito. I partner si impegnano a usarla solo per questo programma e a non inviare comunicazioni commerciali non richieste. I dati sono
         trattati su servizi di hosting e database (Vercel, Supabase) e confrontati con i pagamenti registrati su Stripe.
       </p>
       <h2>I tuoi diritti</h2>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { db } from "@/lib/supabase";
 import { SITES } from "@/lib/sites";
-import { commissionCents, maskEmail, saleStatus } from "@/lib/commission";
+import { commissionCents, saleStatus } from "@/lib/commission";
 import { PANEL, dateFmt, money, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../LangSwitch";
 import CopyButton from "../../CopyButton";
@@ -90,7 +90,7 @@ export default async function PartnerPage({
               <tr key={l.id}>
                 <td>{dateFmt(l.created_at, lang)}</td>
                 <td>{SITES.find((x) => x.key === l.site_key)?.name ?? l.site_key}</td>
-                <td>{maskEmail(l.email)}</td>
+                <td>{l.email}</td>
                 <td>{buyers.has(String(l.email).toLowerCase()) ? T.contactsBought.yes : T.contactsBought.no}</td>
               </tr>
             ))}
@@ -109,7 +109,7 @@ export default async function PartnerPage({
               return (
                 <tr key={s.id}>
                   <td>{dateFmt(s.paid_at, lang)}</td>
-                  <td>{maskEmail(s.email)}</td>
+                  <td>{s.email ?? "—"}</td>
                   <td>{s.description ?? "—"}</td>
                   <td>{eur(commissionCents(s))}</td>
                   <td><span className={`pill ${st === "in attesa" ? "attesa" : st}`}>{T.statusLabel[st] ?? st}</span></td>

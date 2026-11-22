@@ -34,7 +34,7 @@ export default async function Contacts({ searchParams }: { searchParams: { partn
       <Nav />
       <div className="wrap">
         <h1>Contatti registrati</h1>
-        <p className="muted">Chi ha lasciato l&apos;email dai link dei partner, anche senza acquisti. Qui vedi le email complete; ai partner restano parzialmente nascoste.</p>
+        <p className="muted">Chi ha lasciato l&apos;email dai link dei partner, anche senza acquisti. Le stesse email, complete, le vede anche il partner nel suo pannello.</p>
 
         <h2>Riepilogo per partner e sito</h2>
         <div className="scroll">
