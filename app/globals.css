@@ -254,3 +254,7 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .how-hl p { margin: 0; font-size: 16px; line-height: 1.55; color: #e7e9fb; max-width: 70ch; }
 .how-ic { flex: none; width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #16134d; display: grid; place-items: center; font: 700 20px/1 Georgia, serif; font-style: italic; }
 @media (max-width: 520px) { .how-hl { padding: 16px; gap: 12px; } }
+
+.tthumb:has(video) { background: linear-gradient(135deg, #16134d, #4f46c8); }
+.tbadge { position: absolute; left: 6px; bottom: 6px; background: rgba(0, 0, 0, .65); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+.tplay { z-index: 1; }

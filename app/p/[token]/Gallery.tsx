@@ -23,7 +23,7 @@ export default function Gallery({ items, labels }: { items: GItem[]; labels: Lab
           <button type="button" className="tcard" key={i.id} onClick={() => open(i)} title={i.title}>
             <span className="tthumb">
               {i.fileUrl && i.kind === "immagine" && <img src={i.fileUrl} alt="" loading="lazy" />}
-              {i.fileUrl && i.kind === "video" && <><video src={`${i.fileUrl}#t=0.1`} preload="metadata" muted playsInline /><em className="tplay" aria-hidden="true" /></>}
+              {i.fileUrl && i.kind === "video" && <><video src={`${i.fileUrl}#t=0.1`} preload="metadata" muted playsInline /><em className="tplay" aria-hidden="true" /><span className="tbadge">Video</span></>}
               {i.fileUrl && i.kind === "file" && <span className="mph">PDF</span>}
               {!i.fileUrl && <span className="mph">{labels.textOnly}</span>}
             </span>
