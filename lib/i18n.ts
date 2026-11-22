@@ -100,6 +100,7 @@ export const PANEL: Record<Lang, PanelText> = {
     tourUi: { next: "Avanti", back: "Indietro", skip: "Salta", close: "Chiudi", of: "{a} di {b}" },
     steps: [
       { target: "", title: "Benvenuto nel tuo pannello", text: "In due minuti ti mostro dove vedere i tuoi guadagni e dove trovare i link da condividere. Puoi rivedere questa visita quando vuoi dal pulsante in alto." },
+      { target: "wa", title: "Scrivimi su WhatsApp", text: "Per qualsiasi dubbio o chiarimento puoi scrivermi da qui: il pulsante apre la chat WhatsApp con un messaggio già pronto, con il tuo nome. Rispondo io di persona." },
       { target: "stats", title: "I tuoi compensi", text: "«In attesa» è il compenso delle vendite recenti: matura dopo 30 giorni senza rimborso. «Maturato» è quello che ti dobbiamo pagare. «Già pagato» è quello che hai ricevuto." },
       { target: "links", title: "I tuoi link personali", text: "Uno per ogni sito. Copiali con un clic e usali nei tuoi video, post e messaggi. Chi li apre viene riconosciuto come una tua segnalazione." },
       { target: "how", title: "Come colleghiamo le vendite a te", text: "Questo riquadro blu spiega la regola più importante: chi apre il tuo link lascia la sua email, poi viene portato sul sito. Quando acquista con la stessa email, la vendita compare qui sotto. Vale il primo partner che ha segnalato la persona, per 12 mesi. Se un cliente usa un'email diversa, scrivici e controlliamo a mano." },
@@ -107,7 +108,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "contacts", title: "Le email registrate", text: "Qui vedi chi ha lasciato l'email dai tuoi link, anche se non ha ancora acquistato. Se poi acquista con la stessa email, la vendita compare tra le vendite attribuite." },
       { target: "sales", title: "Le vendite attribuite", text: "Ogni riga è una vendita arrivata da te, con il compenso e lo stato. Le email dei clienti vanno usate solo per questo programma." },
       { target: "payouts", title: "I pagamenti", text: "Una volta al mese chiudiamo i conti e paghiamo il maturato, dai 50 € in su. Qui trovi ogni pagamento con la data." },
-      { target: "", title: "Hai finito", text: "Se un cliente compra con un'email diversa da quella lasciata nel link, scrivici: controlliamo e assegniamo la vendita a mano. Buon lavoro!" },
+      { target: "", title: "Hai finito", text: "Se un cliente compra con un'email diversa da quella lasciata nel link, o hai qualsiasi altro dubbio, scrivimi su WhatsApp: controlliamo e ti rispondo. Buon lavoro!" },
     ],
   },
   en: {
@@ -151,6 +152,7 @@ export const PANEL: Record<Lang, PanelText> = {
     tourUi: { next: "Next", back: "Back", skip: "Skip", close: "Close", of: "{a} of {b}" },
     steps: [
       { target: "", title: "Welcome to your dashboard", text: "In two minutes I'll show you where to see your earnings and where to find the links to share. You can replay this tour any time from the button at the top." },
+      { target: "wa", title: "Message me on WhatsApp", text: "For any question or clarification you can write to me from here: the button opens a WhatsApp chat with a ready message that includes your name. I reply personally." },
       { target: "stats", title: "Your earnings", text: "\"Pending\" is the fee on recent sales: it vests after 30 days without a refund. \"Vested\" is what we owe you. \"Already paid\" is what you have received." },
       { target: "links", title: "Your personal links", text: "One for each website. Copy them with one click and use them in your videos, posts and messages. Anyone who opens them is recognised as your referral." },
       { target: "how", title: "How sales are linked to you", text: "This blue box explains the key rule: anyone who opens your link leaves their email, then is taken to the website. When they buy with the same email, the sale shows up below. The first partner who referred the person wins, for 12 months. If a customer uses a different email, write to us and we check by hand." },
@@ -158,7 +160,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "contacts", title: "Registered emails", text: "Here you see who left their email through your links, even if they have not bought yet. If they later buy with the same email, the sale appears in your attributed sales." },
       { target: "sales", title: "Attributed sales", text: "Each row is a sale that came through you, with its fee and status. Customer emails must be used only for this programme." },
       { target: "payouts", title: "Payments", text: "Once a month we close the accounts and pay what has vested, from €50 upwards. Here you find every payment with its date." },
-      { target: "", title: "You're all set", text: "If a customer buys with a different email from the one left on the link, write to us: we'll check and assign the sale by hand. Good luck!" },
+      { target: "", title: "You're all set", text: "If a customer buys with a different email from the one left on the link, or you have any other question, message me on WhatsApp: we'll check and reply. Good luck!" },
     ],
   },
 };
