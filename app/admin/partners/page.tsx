@@ -62,6 +62,7 @@ export default async function Partners({
               <div className="linkrow">
                 <code>{panel}</code>
                 <CopyButton text={panel} label="Copia pannello" />
+                <CopyButton text={`${panel}?lang=en`} label="Copia pannello in inglese" />
               </div>
 
               <p className="muted" style={{ margin: "14px 0 0" }}>Link da usare nei suoi contenuti:</p>

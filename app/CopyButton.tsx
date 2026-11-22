@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function CopyButton({ text, label = "Copia" }: { text: string; label?: string }) {
+export default function CopyButton({ text, label = "Copia", doneLabel = "Copiato" }: { text: string; label?: string; doneLabel?: string }) {
   const [done, setDone] = useState(false);
   async function copy() {
     try {
@@ -20,7 +20,7 @@ export default function CopyButton({ text, label = "Copia" }: { text: string; la
   }
   return (
     <button type="button" className="ghost small" onClick={copy} aria-live="polite">
-      {done ? "Copiato" : label}
+      {done ? doneLabel : label}
     </button>
   );
 }
