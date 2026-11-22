@@ -1,6 +1,6 @@
 export default function Privacy() {
-  const owner = process.env.OWNER_NAME || "[Titolare del trattamento - da completare]";
-  const contact = process.env.OWNER_CONTACT || "[email di contatto - da completare]";
+  const owner = process.env.OWNER_NAME || "Antonino Stramera, via della Cooperazione 5, 52021 Bucine (AR)";
+  const contact = process.env.OWNER_CONTACT || "amcall.services@gmail.com";
   return (
     <div className="wrap narrow">
       <h1>Informativa privacy</h1>

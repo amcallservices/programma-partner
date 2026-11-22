@@ -20,8 +20,8 @@ export default async function Sales({ searchParams }: { searchParams: { err?: st
       <Nav />
       <div className="wrap">
         <h1>Vendite</h1>
-        {searchParams.ok && <p className="okmsg">Vendita aggiunta.</p>}
-        {searchParams.err && <p className="err">Errore: {searchParams.err}</p>}
+        {searchParams.ok && <p className="notice">Vendita aggiunta.</p>}
+        {searchParams.err && <p className="notice bad">Errore: {searchParams.err}</p>}
 
         <h2>Aggiungi una vendita a mano (es. PayPal / Liberamente)</h2>
         <form action={addManualSale} className="card row">

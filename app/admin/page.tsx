@@ -3,6 +3,7 @@ import { db } from "@/lib/supabase";
 import { commissionCents, eur, saleStatus } from "@/lib/commission";
 import Nav from "./Nav";
 import { syncNow } from "./actions";
+import SyncButton from "./SyncButton";
 
 export const dynamic = "force-dynamic";
 
@@ -37,17 +38,17 @@ export default async function Admin({ searchParams }: { searchParams: { msg?: st
       <Nav />
       <div className="wrap">
         <h1>Riepilogo</h1>
-        {searchParams.msg && <p className="okmsg">{searchParams.msg}</p>}
+        {searchParams.msg && <p className="notice" role="status">{searchParams.msg}</p>}
         <div className="grid">
-          <div className="card stat"><span className="muted">Click sui link</span><b>{clicks ?? 0}</b></div>
-          <div className="card stat"><span className="muted">Email raccolte</span><b>{leads ?? 0}</b></div>
-          <div className="card stat"><span className="muted">Vendite attribuite</span><b>{attributed.length}</b></div>
-          <div className="card stat"><span className="muted">Vendite senza partner</span><b>{all.length - attributed.length}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--soft)" }}><span>Click sui link</span><b>{clicks ?? 0}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--seo)" }}><span>Email raccolte</span><b>{leads ?? 0}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--boost)" }}><span>Vendite attribuite</span><b>{attributed.length}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--lib)" }}><span>Vendite senza partner</span><b>{all.length - attributed.length}</b></div>
         </div>
         <div className="grid">
-          <div className="card stat"><span className="muted">Compensi in attesa (30 giorni)</span><b>{eur(sum("in attesa"))}</b></div>
-          <div className="card stat"><span className="muted">Compensi maturati da pagare</span><b>{eur(sum("maturata"))}</b></div>
-          <div className="card stat"><span className="muted">Compensi già pagati</span><b>{eur(sum("pagata"))}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--lib)" }}><span>Compensi in attesa (30 giorni)</span><b>{eur(sum("in attesa"))}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--seo)" }}><span>Compensi maturati da pagare</span><b>{eur(sum("maturata"))}</b></div>
+          <div className="card stat" style={{ ["--stat" as string]: "var(--soft)" }}><span>Compensi già pagati</span><b>{eur(sum("pagata"))}</b></div>
         </div>
 
         <h2>Per partner</h2>
@@ -79,7 +80,7 @@ export default async function Admin({ searchParams }: { searchParams: { msg?: st
               <option value="365">Ultimi 12 mesi (prima volta)</option>
             </select>
           </div>
-          <div><button type="submit">Sincronizza ora</button></div>
+          <div className="auto"><SyncButton /></div>
         </form>
         <p className="muted">La sincronizzazione parte anche da sola ogni 6 ore. Stripe viene solo letto, mai modificato.</p>
       </div>

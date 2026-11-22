@@ -21,7 +21,7 @@ export default async function Payouts({ searchParams }: { searchParams: { msg?: 
       <Nav />
       <div className="wrap">
         <h1>Pagamenti ai partner</h1>
-        {searchParams.msg && <p className="okmsg">{searchParams.msg}</p>}
+        {searchParams.msg && <p className="notice">{searchParams.msg}</p>}
         <div className="card">
           <p>
             "Chiudi il mese" raggruppa, per ogni partner, i compensi <b>maturati</b> (vendite non rimborsate con più di 30

@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/supabase";
 import { SITES } from "@/lib/sites";
 import { commissionCents, eur, maskEmail, saleStatus } from "@/lib/commission";
+import CopyButton from "../../CopyButton";
+import Tour from "./Tour";
 
 export const dynamic = "force-dynamic";
 export const metadata = { robots: { index: false, follow: false } };
@@ -29,35 +31,46 @@ export default async function PartnerPage({ params }: { params: { token: string 
 
   return (
     <div className="wrap">
-      <h1>Ciao {partner.name}</h1>
-      <p className="muted">Il tuo compenso è del {Number(partner.commission_pct)}% su ogni vendita generata dai clienti che arrivano dai tuoi link. Il compenso matura 30 giorni dopo la vendita, se non c'è rimborso.</p>
+      <div className="helpbar">
+        <h1>Ciao {partner.name}</h1>
+        <Tour />
+      </div>
+      <p className="lead" style={{ marginTop: 10 }}>
+        Il tuo compenso è del {Number(partner.commission_pct)}% su ogni vendita generata dai clienti che arrivano dai tuoi link. Matura 30 giorni dopo la vendita, se non c&apos;è rimborso.
+      </p>
 
-      <div className="grid">
-        <div className="card stat"><span className="muted">In attesa</span><b>{eur(tot("in attesa"))}</b></div>
-        <div className="card stat"><span className="muted">Maturato da pagare</span><b>{eur(tot("maturata"))}</b></div>
-        <div className="card stat"><span className="muted">Già pagato</span><b>{eur(tot("pagata"))}</b></div>
-        <div className="card stat"><span className="muted">Vendite</span><b>{mine.filter((s) => saleStatus(s) !== "annullata").length}</b></div>
+      <div className="grid" data-tour="stats" style={{ marginTop: 18 }}>
+        <div className="card stat" style={{ ["--stat" as string]: "var(--lib)", margin: 0 }}><span>In attesa</span><b>{eur(tot("in attesa"))}</b><small>maturano entro 30 giorni</small></div>
+        <div className="card stat" style={{ ["--stat" as string]: "var(--seo)", margin: 0 }}><span>Maturato da pagare</span><b>{eur(tot("maturata"))}</b><small>lo paghiamo a fine mese</small></div>
+        <div className="card stat" style={{ ["--stat" as string]: "var(--soft)", margin: 0 }}><span>Già pagato</span><b>{eur(tot("pagata"))}</b></div>
+        <div className="card stat" style={{ ["--stat" as string]: "var(--boost)", margin: 0 }}><span>Vendite</span><b>{mine.filter((s) => saleStatus(s) !== "annullata").length}</b></div>
       </div>
 
       <h2>I tuoi link</h2>
-      <div className="scroll">
-        <table>
-          <thead><tr><th>Sito</th><th>Link da condividere</th><th>Click</th><th>Email raccolte</th></tr></thead>
-          <tbody>
-            {perSite.map((s) => (
-              <tr key={s.key}>
-                <td>{s.name}</td>
-                <td><code>{base}/go/{partner.code}/{s.key}</code></td>
-                <td>{s.clicks}</td>
-                <td>{s.leads}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="card" data-tour="links" style={{ paddingTop: 8, paddingBottom: 8 }}>
+        {perSite.map((s) => {
+          const url = `${base}/go/${partner.code}/${s.key}`;
+          return (
+            <div className="linkrow" key={s.key} style={{ ["--c" as string]: s.color }}>
+              <span className="dot" />
+              <span className="nm">{s.name}<div className="muted" style={{ fontWeight: 400 }}>{s.clicks} click · {s.leads} email</div></span>
+              <code>{url}</code>
+              <CopyButton text={url} />
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="card flat" data-tour="how">
+        <h3>Come colleghiamo le vendite a te</h3>
+        <p className="muted" style={{ margin: "6px 0 0" }}>
+          Chi apre il tuo link lascia la sua email e viene portato sul sito. Quando acquista con quella email, la vendita compare qui sotto.
+          Se un cliente usa un&apos;email diversa, scrivici e controlliamo a mano.
+        </p>
       </div>
 
       <h2>Vendite attribuite</h2>
-      <div className="scroll">
+      <div className="scroll" data-tour="sales">
         <table>
           <thead><tr><th>Data</th><th>Cliente</th><th>Descrizione</th><th>Compenso</th><th>Stato</th></tr></thead>
           <tbody>
@@ -79,7 +92,7 @@ export default async function PartnerPage({ params }: { params: { token: string 
       </div>
 
       <h2>Pagamenti ricevuti</h2>
-      <div className="scroll">
+      <div className="scroll" data-tour="payouts">
         <table>
           <thead><tr><th>Periodo</th><th>Importo</th><th>Stato</th></tr></thead>
           <tbody>
@@ -90,10 +103,6 @@ export default async function PartnerPage({ params }: { params: { token: string 
           </tbody>
         </table>
       </div>
-      <p className="muted" style={{ marginTop: 20 }}>
-        Nota: le vendite vengono collegate al tuo link tramite l'email che il cliente lascia nella pagina d'ingresso. Se un cliente usa
-        un'email diversa, scrivici e verifichiamo l'attribuzione a mano.
-      </p>
     </div>
   );
 }

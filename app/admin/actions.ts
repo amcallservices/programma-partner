@@ -65,6 +65,40 @@ export async function togglePartner(formData: FormData) {
   revalidatePath("/admin/partners");
 }
 
+export async function deletePartner(formData: FormData) {
+  requireAdmin();
+  const id = String(formData.get("id") ?? "");
+  const typed = String(formData.get("confirm") ?? "").trim().toLowerCase();
+  const supa = db();
+  const { data: partner } = await supa.from("partners").select("id, name").eq("id", id).maybeSingle();
+  if (!partner) redirect("/admin/partners?err=" + encodeURIComponent("Partner non trovato"));
+  if (typed !== partner.name.trim().toLowerCase()) {
+    redirect("/admin/partners?err=" + encodeURIComponent("Il nome scritto non coincide: partner non eliminato"));
+  }
+  const { count: paid } = await supa
+    .from("payouts")
+    .select("id", { count: "exact", head: true })
+    .eq("partner_id", id)
+    .eq("status", "pagato");
+  if ((paid ?? 0) > 0) {
+    redirect(
+      "/admin/partners?err=" +
+        encodeURIComponent(`${partner.name} ha già ricevuto pagamenti: per tenere lo storico disattivalo invece di eliminarlo`)
+    );
+  }
+  // Le vendite restano, ma tornano senza partner.
+  await supa
+    .from("sales")
+    .update({ partner_id: null, lead_id: null, payout_id: null, commission_pct: null, attribution: "nessuna" })
+    .eq("partner_id", id);
+  const { error } = await supa.from("partners").delete().eq("id", id);
+  if (error) redirect("/admin/partners?err=" + encodeURIComponent(error.message));
+  revalidatePath("/admin");
+  revalidatePath("/admin/partners");
+  revalidatePath("/admin/sales");
+  redirect("/admin/partners?deleted=" + encodeURIComponent(partner.name));
+}
+
 export async function syncNow(formData: FormData) {
   requireAdmin();
   const days = Number(formData.get("days") ?? 45);

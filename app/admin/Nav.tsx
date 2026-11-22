@@ -1,18 +1,32 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { logout } from "./actions";
 
+const LINKS = [
+  { href: "/admin", label: "Riepilogo" },
+  { href: "/admin/partners", label: "Partner e link" },
+  { href: "/admin/sales", label: "Vendite" },
+  { href: "/admin/payouts", label: "Pagamenti" },
+];
+
 export default function Nav() {
+  const path = usePathname();
   return (
-    <div className="nav">
-      <strong style={{ color: "#fff" }}>Programma partner</strong>
-      <Link href="/admin">Riepilogo</Link>
-      <Link href="/admin/partners">Partner e link</Link>
-      <Link href="/admin/sales">Vendite</Link>
-      <Link href="/admin/payouts">Pagamenti</Link>
+    <nav className="nav" aria-label="Area amministratore">
+      <span className="brand">Programma partner</span>
+      {LINKS.map((l) => (
+        <Link key={l.href} href={l.href} aria-current={path === l.href ? "page" : undefined}>
+          {l.label}
+        </Link>
+      ))}
       <span className="sp" />
       <form action={logout}>
-        <button className="ghost small" type="submit">Esci</button>
+        <button className="ghost small" type="submit" style={{ color: "#fff", borderColor: "rgba(255,255,255,.35)" }}>
+          Esci
+        </button>
       </form>
-    </div>
+    </nav>
   );
 }

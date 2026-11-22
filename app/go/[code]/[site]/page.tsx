@@ -28,9 +28,9 @@ export default async function Landing({
   await supa.from("clicks").insert({ partner_id: partner.id, site_key: site.key });
 
   return (
-    <div className="wrap narrow">
-      <div className="hero" style={{ background: site.color }}>
-        <div style={{ opacity: 0.85, fontWeight: 700 }}>{site.name}</div>
+    <div className="entry" style={{ ["--c" as string]: site.color }}>
+      <div className="book">
+        <div className="name">{site.name}</div>
         <h1>{site.headline}</h1>
         <p>{site.pitch}</p>
         <ul>
@@ -40,11 +40,11 @@ export default async function Landing({
         </ul>
       </div>
 
-      <form action={submitLead} className="card">
+      <form action={submitLead} className="card" style={{ margin: 0 }}>
         <input type="hidden" name="code" value={params.code} />
         <input type="hidden" name="site" value={site.key} />
-        <h2 style={{ marginTop: 0 }}>Continua verso {site.name}</h2>
-        <p className="muted">
+        <h2 style={{ margin: 0, fontSize: 24 }}>Continua verso {site.name}</h2>
+        <p className="muted" style={{ marginTop: 8 }}>
           Inserisci la tua email: ci serve solo per riconoscere chi ti ha segnalato il sito. Poi ti portiamo subito sul sito.
           Usa la stessa email quando ti iscrivi o acquisti.
         </p>
@@ -52,15 +52,17 @@ export default async function Landing({
         <input id="name" name="name" autoComplete="name" />
         <label htmlFor="email">Email</label>
         <input id="email" name="email" type="email" required autoComplete="email" />
-        <label style={{ fontWeight: 400, marginTop: 14 }}>
+        <label className="check" style={{ marginTop: 16 }}>
           <input type="checkbox" name="consent" required />
-          Acconsento al trattamento di nome ed email per attribuire la segnalazione a chi mi ha inviato il sito. Leggi l'{" "}
-          <Link href="/privacy" target="_blank">informativa privacy</Link>.
+          <span>
+            Acconsento al trattamento di nome ed email per attribuire la segnalazione a chi mi ha inviato il sito. Leggi l&apos;{" "}
+            <Link href="/privacy" target="_blank">informativa privacy</Link>.
+          </span>
         </label>
-        {searchParams.err === "email" && <p className="err">Inserisci un indirizzo email valido.</p>}
-        {searchParams.err === "consenso" && <p className="err">Per continuare serve il consenso.</p>}
-        <p style={{ marginTop: 16 }}>
-          <button type="submit" style={{ background: site.color }}>Vai a {site.name}</button>
+        {searchParams.err === "email" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>Inserisci un indirizzo email valido.</p>}
+        {searchParams.err === "consenso" && <p className="notice bad" role="alert" style={{ marginTop: 14 }}>Per continuare serve il consenso.</p>}
+        <p style={{ marginTop: 18, marginBottom: 0 }}>
+          <button type="submit" style={{ background: site.color, borderColor: site.color }}>Vai a {site.name}</button>
         </p>
       </form>
     </div>
