@@ -51,6 +51,7 @@ export default async function PartnerPage({
         <h1>{T.hello(partner.name)}</h1>
         <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
           <LangSwitch lang={lang} label={T.langLabel} />
+          <a className="btn wa" href={`https://wa.me/393282693777?text=${encodeURIComponent(T.waMsg(partner.name))}`} target="_blank" rel="noopener noreferrer">{T.waLabel}</a>
           <Tour steps={T.steps} ui={T.tourUi} label={T.tour} />
         </div>
       </div>

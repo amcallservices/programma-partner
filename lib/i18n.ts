@@ -43,6 +43,8 @@ export type PanelText = {
   mediaTextOnly: string;
   mediaRead: string;
   mediaClose: string;
+  waLabel: string;
+  waMsg: (name: string) => string;
   salesTitle: string;
   salesCols: string[];
   salesEmpty: string;
@@ -84,6 +86,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Testo",
     mediaRead: "Descrizione del post",
     mediaClose: "Chiudi",
+    waLabel: "Scrivimi su WhatsApp",
+    waMsg: (n) => `Sono un partner, mi chiamo ${n}.`,
     salesTitle: "Vendite attribuite",
     salesCols: ["Data", "Cliente", "Descrizione", "Compenso", "Stato"],
     salesEmpty: "Ancora nessuna vendita.",
@@ -133,6 +137,8 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Text",
     mediaRead: "Post description",
     mediaClose: "Close",
+    waLabel: "Message me on WhatsApp",
+    waMsg: (n) => `I am a partner, my name is ${n}.`,
     salesTitle: "Attributed sales",
     salesCols: ["Date", "Customer", "Description", "Fee", "Status"],
     salesEmpty: "No sales yet.",
