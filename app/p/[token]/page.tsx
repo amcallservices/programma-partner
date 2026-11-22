@@ -138,7 +138,8 @@ export default async function PartnerPage({
               <summary><i />{s.name}</summary>
               <div className="tip-body">
                 <p><b>{T.tipsFor}:</b> {t.who}</p>
-                <p className="tip-link"><b>{T.tipsLink}:</b>{" "}<NoCopyLink href={`${base}/go/${partner.code}/${s.key}`}>{T.tipsOpen} {s.name}</NoCopyLink></p>
+                <p className="tip-link"><b>{T.tipsLink}:</b>{" "}<NoCopyLink href={s.url}>{T.tipsOpen} {s.name}</NoCopyLink></p>
+                <p className="tip-warn" role="note">{T.tipsWarn}</p>
                 <ul>{t.ideas.map((x) => <li key={x}>{x}</li>)}</ul>
               </div>
             </details>

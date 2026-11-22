@@ -49,6 +49,7 @@ export type PanelText = {
   tipsFor: string;
   tipsLink: string;
   tipsOpen: string;
+  tipsWarn: string;
   welcomeSlogan: string;
   welcomeText: string;
   waLabel: string;
@@ -98,8 +99,9 @@ export const PANEL: Record<Lang, PanelText> = {
     tipsIntro: "Qualche idea pratica per ogni sito: a chi parlare e cosa dire. Scegli quelle che senti tue e usa sempre il tuo link.",
     linksNote: "Guadagni solo con questi link, non usarne altri (salvo quelli dei post creati da noi, in quanto sono già incorporati).",
     tipsFor: "Per chi",
-    tipsLink: "Il sito con il tuo link",
-    tipsOpen: "Apri",
+    tipsLink: "Sito ufficiale",
+    tipsOpen: "Visita",
+    tipsWarn: "Serve solo per visitare il sito e capire cosa promuovi. Non copiarlo e non condividerlo: non possiamo tracciarlo e non guadagneresti nulla. Condividi sempre i tuoi link personali.",
     welcomeSlogan: "Dalla prima pagina al primo cliente: porta chi scrive e chi fa impresa, e cresciamo insieme.",
     welcomeText: "Fai parte della nostra squadra. Con Scrittore Site, Liberamente e la community aiuti chi vuole scrivere e pubblicare un libro; con BOOST AI porti il marketing automatizzato a professionisti e attività imprenditoriali. Puoi promuovere tutto: noi siamo qui per aiutarti in ogni passo.",
     waLabel: "Scrivimi su WhatsApp",
@@ -159,8 +161,9 @@ export const PANEL: Record<Lang, PanelText> = {
     tipsIntro: "A few practical ideas for each site: who to talk to and what to say. Pick the ones that feel right and always use your link.",
     linksNote: "You earn only with these links, do not use any others (except those in the posts we created, since they are already built in).",
     tipsFor: "For whom",
-    tipsLink: "The site with your link",
-    tipsOpen: "Open",
+    tipsLink: "Official site",
+    tipsOpen: "Visit",
+    tipsWarn: "It is only for visiting the site and understanding what you promote. Do not copy or share it: we cannot track it and you would earn nothing. Always share your personal links.",
     welcomeSlogan: "From the first page to the first customer: bring those who write and those who run a business, and we grow together.",
     welcomeText: "You are part of our team. With Scrittore Site, Liberamente and the community you help people write and publish a book; with BOOST AI you bring automated marketing to professionals and businesses. You can promote it all: we are here to help you every step of the way.",
     waLabel: "Message me on WhatsApp",
