@@ -15,7 +15,7 @@ export default function Home() {
             serve modificare nessun sito e non ci sono codici sconto da gestire.
           </p>
           <p style={{ marginTop: 22, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a className="btn" href={`mailto:${MAIL}?subject=Programma%20partner`}>Scrivici per iniziare</a>
+            <a className="btn" href={`https://wa.me/393282693777?text=${encodeURIComponent("Ti scrivo dal sito partner, voglio collaborare.")}`} target="_blank" rel="noopener noreferrer">Scrivici per iniziare</a>
             <a className="btn ghost" href="#calcolo">Calcola quanto puoi guadagnare</a>
           </p>
         </div>
