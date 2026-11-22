@@ -1,13 +1,15 @@
 import Link from "next/link";
 import Shelf from "./Shelf";
 import Simulator from "./Simulator";
+import Glow from "./Glow";
 
 const MAIL = "amcall.services@gmail.com";
 
 export default function Home() {
   return (
     <div className="wrap">
-      <header className="hero-home">
+      <Glow />
+      <header className="hero-home" data-glow>
         <div>
           <h1>Porta nuovi scrittori ai nostri cinque siti e guadagna il 10% su ogni vendita.</h1>
           <p className="lead" style={{ marginTop: 18 }}>
@@ -15,7 +17,7 @@ export default function Home() {
             serve modificare nessun sito e non ci sono codici sconto da gestire.
           </p>
           <p style={{ marginTop: 22, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a className="btn" href={`https://wa.me/393282693777?text=${encodeURIComponent("Ti scrivo dal sito partner, voglio collaborare.")}`} target="_blank" rel="noopener noreferrer">Scrivici per iniziare</a>
+            <a className="btn cta" href={`https://wa.me/393282693777?text=${encodeURIComponent("Ti scrivo dal sito partner, voglio collaborare.")}`} target="_blank" rel="noopener noreferrer">Scrivici per iniziare</a>
             <a className="btn ghost" href="#calcolo">Calcola quanto puoi guadagnare</a>
           </p>
         </div>
@@ -24,14 +26,14 @@ export default function Home() {
 
       <h2 id="come">Come funziona</h2>
       <div className="steps">
-        <div className="card"><h3>Ricevi il tuo pannello</h3><p className="muted" style={{ marginTop: 6 }}>Ti inviamo un indirizzo privato con i tuoi cinque link e un tour guidato che spiega ogni numero.</p></div>
-        <div className="card"><h3>Condividi i link</h3><p className="muted" style={{ marginTop: 6 }}>Chi li apre lascia la sua email e viene portato subito sul sito scelto.</p></div>
-        <div className="card"><h3>Le vendite si collegano a te</h3><p className="muted" style={{ marginTop: 6 }}>Riconosciamo l&apos;acquisto dall&apos;email. Vale il primo partner che ha segnalato quella persona, per 12 mesi.</p></div>
-        <div className="card"><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 10% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
+        <div className="card" data-glow><h3>Ricevi il tuo pannello</h3><p className="muted" style={{ marginTop: 6 }}>Ti inviamo un indirizzo privato con i tuoi cinque link e un tour guidato che spiega ogni numero.</p></div>
+        <div className="card" data-glow><h3>Condividi i link</h3><p className="muted" style={{ marginTop: 6 }}>Chi li apre lascia la sua email e viene portato subito sul sito scelto.</p></div>
+        <div className="card" data-glow><h3>Le vendite si collegano a te</h3><p className="muted" style={{ marginTop: 6 }}>Riconosciamo l&apos;acquisto dall&apos;email. Vale il primo partner che ha segnalato quella persona, per 12 mesi.</p></div>
+        <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 10% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
       </div>
 
       <h2 id="calcolo">Quanto puoi guadagnare</h2>
-      <div className="card"><Simulator /></div>
+      <div className="card" data-glow><Simulator /></div>
 
       <h2>Domande frequenti</h2>
       <details className="faq"><summary>Cosa devo fare per iniziare?</summary><p>Scrivici: ti mandiamo il contratto di collaborazione da compilare con i tuoi dati e il tuo pannello personale con i link.</p></details>
