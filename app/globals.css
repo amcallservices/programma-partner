@@ -265,3 +265,11 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .welcome-hl { margin: 14px 0 6px; padding: 16px 20px; border-radius: 14px; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--lib); }
 .welcome-hl b { display: block; font-family: var(--font-serif, Literata, Georgia, serif); font-size: 21px; line-height: 1.3; color: var(--ink); }
 .welcome-hl p { margin: 6px 0 0; color: #3b3f63; max-width: 70ch; }
+
+.tips { display: grid; gap: 8px; margin-bottom: 8px; }
+.tip { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--c); border-radius: 10px; }
+.tip summary { cursor: pointer; padding: 11px 14px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.tip summary i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+.tip-body { padding: 0 16px 14px 34px; }
+.tip-body p { margin: 0 0 6px; }
+.tip-body ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }

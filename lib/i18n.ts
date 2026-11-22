@@ -43,6 +43,9 @@ export type PanelText = {
   mediaTextOnly: string;
   mediaRead: string;
   mediaClose: string;
+  tipsTitle: string;
+  tipsIntro: string;
+  tipsFor: string;
   welcomeSlogan: string;
   welcomeText: string;
   waLabel: string;
@@ -88,6 +91,9 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Testo",
     mediaRead: "Descrizione del post",
     mediaClose: "Chiudi",
+    tipsTitle: "Come attirare nuovi utenti",
+    tipsIntro: "Qualche idea pratica per ogni sito: a chi parlare e cosa dire. Scegli quelle che senti tue e usa sempre il tuo link.",
+    tipsFor: "Per chi",
     welcomeSlogan: "Dalla prima pagina al primo cliente: porta chi scrive e chi fa impresa, e cresciamo insieme.",
     welcomeText: "Fai parte della nostra squadra. Con Scrittore Site, Liberamente e la community aiuti chi vuole scrivere e pubblicare un libro; con BOOST AI porti il marketing automatizzato a professionisti e attività imprenditoriali. Puoi promuovere tutto: noi siamo qui per aiutarti in ogni passo.",
     waLabel: "Scrivimi su WhatsApp",
@@ -109,6 +115,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "links", title: "I tuoi link personali", text: "Uno per ogni sito. Copiali con un clic e usali nei tuoi video, post e messaggi. Chi li apre viene riconosciuto come una tua segnalazione." },
       { target: "how", title: "Come colleghiamo le vendite a te", text: "Questo riquadro blu spiega la regola più importante: chi apre il tuo link lascia la sua email, poi viene portato sul sito. Quando acquista con la stessa email, la vendita compare qui sotto. Vale il primo partner che ha segnalato la persona, per 12 mesi. Se un cliente usa un'email diversa, scrivici e controlliamo a mano." },
       { target: "media", title: "I media per la promozione", text: "Immagini, video e testi pronti, divisi per sito e nella lingua che hai scelto. Clicca una miniatura per ingrandirla: da lì scarichi il file e copi la descrizione del post, con il tuo link già dentro. Nelle immagini e nei video il link non può stare: incollalo nella descrizione quando pubblichi." },
+      { target: "tips", title: "Come attirare nuovi utenti", text: "Per ogni sito trovi a chi parlare e tre idee pratiche su cosa dire. Sono suggerimenti: scegli quelli più adatti a te e usa sempre il tuo link." },
       { target: "contacts", title: "Le email registrate", text: "Qui vedi chi ha lasciato l'email dai tuoi link, anche se non ha ancora acquistato. Se poi acquista con la stessa email, la vendita compare tra le vendite attribuite." },
       { target: "sales", title: "Le vendite attribuite", text: "Ogni riga è una vendita arrivata da te, con il compenso e lo stato. Le email dei clienti vanno usate solo per questo programma." },
       { target: "payouts", title: "I pagamenti", text: "Una volta al mese chiudiamo i conti e paghiamo il maturato, dai 50 € in su. Qui trovi ogni pagamento con la data." },
@@ -142,6 +149,9 @@ export const PANEL: Record<Lang, PanelText> = {
     mediaTextOnly: "Text",
     mediaRead: "Post description",
     mediaClose: "Close",
+    tipsTitle: "How to attract new users",
+    tipsIntro: "A few practical ideas for each site: who to talk to and what to say. Pick the ones that feel right and always use your link.",
+    tipsFor: "For whom",
     welcomeSlogan: "From the first page to the first customer: bring those who write and those who run a business, and we grow together.",
     welcomeText: "You are part of our team. With Scrittore Site, Liberamente and the community you help people write and publish a book; with BOOST AI you bring automated marketing to professionals and businesses. You can promote it all: we are here to help you every step of the way.",
     waLabel: "Message me on WhatsApp",
@@ -163,6 +173,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "links", title: "Your personal links", text: "One for each website. Copy them with one click and use them in your videos, posts and messages. Anyone who opens them is recognised as your referral." },
       { target: "how", title: "How sales are linked to you", text: "This blue box explains the key rule: anyone who opens your link leaves their email, then is taken to the website. When they buy with the same email, the sale shows up below. The first partner who referred the person wins, for 12 months. If a customer uses a different email, write to us and we check by hand." },
       { target: "media", title: "Promotional media", text: "Ready-made images, videos and texts, split by site and shown in the language you chose. Click a thumbnail to enlarge it: from there you download the file and copy the post description, with your link already inside. A link cannot sit inside images or videos: paste it in the caption when you publish." },
+      { target: "tips", title: "How to attract new users", text: "For each site you find who to talk to and three practical ideas on what to say. They are suggestions: pick what suits you and always use your link." },
       { target: "contacts", title: "Registered emails", text: "Here you see who left their email through your links, even if they have not bought yet. If they later buy with the same email, the sale appears in your attributed sales." },
       { target: "sales", title: "Attributed sales", text: "Each row is a sale that came through you, with its fee and status. Customer emails must be used only for this programme." },
       { target: "payouts", title: "Payments", text: "Once a month we close the accounts and pay what has vested, from €50 upwards. Here you find every payment with its date." },

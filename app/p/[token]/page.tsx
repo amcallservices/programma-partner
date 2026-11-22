@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { db } from "@/lib/supabase";
-import { SITES } from "@/lib/sites";
+import { SITES, TIPS } from "@/lib/sites";
 import { commissionCents, saleStatus } from "@/lib/commission";
 import { PANEL, dateFmt, money, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../LangSwitch";
@@ -120,6 +120,23 @@ export default async function PartnerPage({
                 <Gallery items={gitems} labels={{ download: T.mediaDownload, copyText: T.mediaCopyText, copyLink: T.mediaCopyLink, copied: T.copied, textOnly: T.mediaTextOnly, close: T.mediaClose, description: T.mediaRead }} />
               )}
             </section>
+          );
+        })}
+      </div>
+
+      <h2>{T.tipsTitle}</h2>
+      <p className="muted" style={{ margin: "0 0 12px" }}>{T.tipsIntro}</p>
+      <div className="tips" data-tour="tips">
+        {SITES.map((s) => {
+          const t = TIPS[lang][s.key];
+          return (
+            <details className="tip" key={s.key} style={{ ["--c" as string]: s.color }}>
+              <summary><i />{s.name}</summary>
+              <div className="tip-body">
+                <p><b>{T.tipsFor}:</b> {t.who}</p>
+                <ul>{t.ideas.map((x) => <li key={x}>{x}</li>)}</ul>
+              </div>
+            </details>
           );
         })}
       </div>

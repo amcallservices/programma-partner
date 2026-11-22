@@ -87,3 +87,91 @@ export const SITE_EN: Record<string, { headline: string; pitch: string; bullets:
     bullets: ["Facebook, Instagram, YouTube and TikTok", "Manual approval or autopilot", "Free trial credits"],
   },
 };
+
+/** Suggerimenti per i partner: come attirare nuovi utenti, sito per sito. */
+export const TIPS: Record<"it" | "en", Record<string, { who: string; ideas: string[] }>> = {
+  it: {
+    seo: {
+      who: "Chi sogna di scrivere un libro e non sa da dove cominciare.",
+      ideas: [
+        "Racconta il problema, non lo strumento: «Hai un'idea ma non riesci a metterla in pagina?» funziona meglio di una lista di funzioni.",
+        "Fai un breve video mentre usi i 50 crediti gratuiti: indice, prima pagina, esportazione. Mostrare vale più che spiegare.",
+        "Parlane nei gruppi Facebook e nelle community di scrittura e autopubblicazione, rispondendo a chi chiede come iniziare.",
+      ],
+    },
+    soft: {
+      who: "Autori che pubblicano già su Amazon KDP e vogliono scrivere più in fretta.",
+      ideas: [
+        "Punta sul risparmio di tempo: indice, stesura e revisione in un unico posto, con il preventivo in crediti prima di ogni operazione.",
+        "Parla del controllo originalità e della checklist KDP a chi ha paura di errori in pubblicazione.",
+        "Confronta il «prima e dopo»: quante settimane servivano per un manoscritto e quanto ci vuole adesso.",
+      ],
+    },
+    lib: {
+      who: "Lettori di autori indipendenti e autori che vogliono vendere il proprio ebook.",
+      ideas: [
+        "Agli autori parla della royalty del 50%: è il numero che attira di più. Mostra un esempio con il prezzo di un ebook.",
+        "Ai lettori consiglia un ebook alla volta, con una breve recensione e il tuo link: una storia convince più di un catalogo.",
+        "Condividi nelle pagine e nei gruppi dedicati ai libri italiani e agli autori emergenti.",
+      ],
+    },
+    com: {
+      who: "Scrittori che vogliono imparare l'autopubblicazione e confrontarsi con altri autori.",
+      ideas: [
+        "Invita a un evento o a un webinar: è un motivo concreto per iscriversi oggi e non «prima o poi».",
+        "Presenta la community come un posto dove fare domande a chi ci è già passato, con consulenze in videochiamata.",
+        "Condividi un consiglio utile di autopubblicazione e chiudi con il link: dai valore prima di chiedere un'iscrizione.",
+      ],
+    },
+    boost: {
+      who: "Professionisti, piccole imprese e attività che vogliono fare marketing sui social senza un'agenzia.",
+      ideas: [
+        "Parla a chi ha un'attività: un post al giorno senza dedicarci ore, con immagini, caroselli e video creati dall'AI.",
+        "Sottolinea che non c'è abbonamento: si pagano solo i crediti usati, e quelli di prova sono gratuiti.",
+        "Contatta direttamente negozi, studi professionali, ristoranti e artigiani che conosci: un messaggio personale vale più di un annuncio.",
+      ],
+    },
+  },
+  en: {
+    seo: {
+      who: "People who dream of writing a book and don't know where to start.",
+      ideas: [
+        "Talk about the problem, not the tool: \"Got an idea but can't get it on the page?\" works better than a feature list.",
+        "Record a short video while using the 50 free credits: outline, first page, export. Showing beats explaining.",
+        "Mention it in Facebook groups and writing and self-publishing communities, answering people who ask how to begin.",
+      ],
+    },
+    soft: {
+      who: "Authors who already publish on Amazon KDP and want to write faster.",
+      ideas: [
+        "Focus on time saved: outline, drafting and revision in one place, with a credit quote before every operation.",
+        "Mention the originality check and the KDP checklist to people worried about publishing mistakes.",
+        "Show the before and after: how many weeks a manuscript used to take and how long it takes now.",
+      ],
+    },
+    lib: {
+      who: "Readers of independent authors and authors who want to sell their own ebook.",
+      ideas: [
+        "To authors, talk about the 50% royalty: it is the number that attracts most. Show an example with an ebook price.",
+        "To readers, recommend one ebook at a time, with a short review and your link: one story convinces more than a catalogue.",
+        "Share in pages and groups about Italian books and emerging authors.",
+      ],
+    },
+    com: {
+      who: "Writers who want to learn self-publishing and exchange with other authors.",
+      ideas: [
+        "Invite people to an event or webinar: it is a concrete reason to sign up today, not \"sometime\".",
+        "Present the community as a place to ask questions to people who have been there, with video-call consultations.",
+        "Share a useful self-publishing tip and end with the link: give value before asking for a sign-up.",
+      ],
+    },
+    boost: {
+      who: "Professionals, small businesses and shops that want social media marketing without an agency.",
+      ideas: [
+        "Speak to business owners: a post a day without spending hours, with images, carousels and videos made by AI.",
+        "Stress that there is no subscription: you only pay for the credits you use, and trial credits are free.",
+        "Contact shops, professional studios, restaurants and craftspeople you know directly: a personal message beats an ad.",
+      ],
+    },
+  },
+};
