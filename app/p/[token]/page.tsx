@@ -7,6 +7,7 @@ import { PANEL, dateFmt, money, pickLang } from "@/lib/i18n";
 import LangSwitch from "../../LangSwitch";
 import CopyButton from "../../CopyButton";
 import Tour from "./Tour";
+import { PROMO_BUCKET, withLink, mb } from "@/lib/promo";
 
 export const dynamic = "force-dynamic";
 export const metadata = { robots: { index: false, follow: false } };
@@ -25,11 +26,12 @@ export default async function PartnerPage({
   const { data: partner } = await supa.from("partners").select("*").eq("token", params.token).maybeSingle();
   if (!partner) notFound();
 
-  const [{ data: sales }, { data: leads }, { data: clicks }, { data: payouts }] = await Promise.all([
+  const [{ data: sales }, { data: leads }, { data: clicks }, { data: payouts }, { data: promo }] = await Promise.all([
     supa.from("sales").select("*").eq("partner_id", partner.id).order("paid_at", { ascending: false }),
     supa.from("leads").select("id, site_key, email, created_at").eq("partner_id", partner.id).order("created_at", { ascending: false }).limit(200),
     supa.from("clicks").select("site_key").eq("partner_id", partner.id),
     supa.from("payouts").select("*").eq("partner_id", partner.id).order("created_at", { ascending: false }),
+    supa.from("promo_items").select("*").order("created_at", { ascending: false }),
   ]);
 
   const mine = sales ?? [];
@@ -78,6 +80,45 @@ export default async function PartnerPage({
       <div className="card flat" data-tour="how">
         <h3>{T.howTitle}</h3>
         <p className="muted" style={{ margin: "6px 0 0" }}>{T.howText}</p>
+      </div>
+
+      <h2>{T.mediaTitle}</h2>
+      <p className="muted" style={{ margin: "0 0 10px" }}>{T.mediaIntro}</p>
+      <div data-tour="media">
+        {perSite.map((s) => {
+          const link = `${base}/go/${partner.code}/${s.key}`;
+          const items = (promo ?? []).filter((i) => i.site_key === s.key && (i.lang === lang || !i.lang));
+          const all = (promo ?? []).filter((i) => i.site_key === s.key);
+          const list = items.length ? items : all;
+          const pub = (p: string) => supa.storage.from(PROMO_BUCKET).getPublicUrl(p).data.publicUrl;
+          return (
+            <div className="card media-site" key={s.key} style={{ ["--c" as string]: s.color }}>
+              <h3 style={{ borderLeft: `6px solid ${s.color}`, paddingLeft: 10 }}>{s.name}</h3>
+              {list.length === 0 && <p className="muted">{T.mediaEmpty}</p>}
+              <div className="media-grid">
+                {list.map((i) => {
+                  const file = i.file_path ? pub(i.file_path) : null;
+                  const dl = file ? `${file}?download=${encodeURIComponent(i.file_name ?? "file")}` : null;
+                  return (
+                    <article className="media-item" key={i.id}>
+                      {file && i.kind === "immagine" && <img src={file} alt={i.title} loading="lazy" />}
+                      {file && i.kind === "video" && <video src={file} controls preload="metadata" playsInline />}
+                      <div className="media-body">
+                        <b>{i.title}</b> <span className="pill">{String(i.lang).toUpperCase()}</span>
+                        {i.body && <p className="media-text">{withLink(i.body, link)}</p>}
+                        {file && i.size_bytes ? <div className="muted">{i.file_name} · {mb(i.size_bytes)}</div> : null}
+                        <div className="media-actions">
+                          {dl && <a className="btn small" href={dl} download={i.file_name ?? undefined}>{T.mediaDownload}</a>}
+                          {i.body ? <CopyButton text={withLink(i.body, link)} label={T.mediaCopyText} doneLabel={T.copied} /> : <CopyButton text={link} label={T.mediaCopyLink} doneLabel={T.copied} />}
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <h2>{T.contactsTitle} ({(leads ?? []).length})</h2>

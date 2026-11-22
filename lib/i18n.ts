@@ -34,6 +34,13 @@ export type PanelText = {
   contactsCols: string[];
   contactsEmpty: string;
   contactsBought: { yes: string; no: string };
+  mediaTitle: string;
+  mediaIntro: string;
+  mediaEmpty: string;
+  mediaDownload: string;
+  mediaCopyText: string;
+  mediaCopyLink: string;
+  mediaTextOnly: string;
   salesTitle: string;
   salesCols: string[];
   salesEmpty: string;
@@ -66,6 +73,13 @@ export const PANEL: Record<Lang, PanelText> = {
     contactsCols: ["Data", "Sito", "Email", "Ha acquistato"],
     contactsEmpty: "Ancora nessuna email registrata.",
     contactsBought: { yes: "sì", no: "non ancora" },
+    mediaTitle: "I media per la promozione",
+    mediaIntro: "Immagini, video e testi pronti per promuovere ogni sito. Scarica il file e copia il testo: il tuo link personale è già dentro. Nelle immagini e nei video il link non può stare: incollalo nella descrizione del post.",
+    mediaEmpty: "Ancora nessun contenuto per questo sito.",
+    mediaDownload: "Scarica",
+    mediaCopyText: "Copia testo con il mio link",
+    mediaCopyLink: "Copia il mio link",
+    mediaTextOnly: "Testo",
     salesTitle: "Vendite attribuite",
     salesCols: ["Data", "Cliente", "Descrizione", "Compenso", "Stato"],
     salesEmpty: "Ancora nessuna vendita.",
@@ -81,6 +95,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "stats", title: "I tuoi compensi", text: "«In attesa» è il compenso delle vendite recenti: matura dopo 30 giorni senza rimborso. «Maturato» è quello che ti dobbiamo pagare. «Già pagato» è quello che hai ricevuto." },
       { target: "links", title: "I tuoi link personali", text: "Uno per ogni sito. Copiali con un clic e usali nei tuoi video, post e messaggi. Chi li apre viene riconosciuto come una tua segnalazione." },
       { target: "how", title: "Come colleghiamo le vendite a te", text: "Chi apre il tuo link lascia la sua email, poi viene portato sul sito. Quando acquista con la stessa email, la vendita compare qui. Vale il primo partner che ha segnalato la persona, per 12 mesi." },
+      { target: "media", title: "I media per la promozione", text: "Qui trovi immagini, video e testi pronti, divisi per sito. Scarica i file e copia i testi: il tuo link personale è già inserito." },
       { target: "contacts", title: "Le email registrate", text: "Qui vedi chi ha lasciato l'email dai tuoi link, anche se non ha ancora acquistato. Se poi acquista con la stessa email, la vendita compare tra le vendite attribuite." },
       { target: "sales", title: "Le vendite attribuite", text: "Ogni riga è una vendita arrivata da te, con il compenso e lo stato. Le email dei clienti vanno usate solo per questo programma." },
       { target: "payouts", title: "I pagamenti", text: "Una volta al mese chiudiamo i conti e paghiamo il maturato, dai 50 € in su. Qui trovi ogni pagamento con la data." },
@@ -105,6 +120,13 @@ export const PANEL: Record<Lang, PanelText> = {
     contactsCols: ["Date", "Site", "Email", "Has bought"],
     contactsEmpty: "No emails registered yet.",
     contactsBought: { yes: "yes", no: "not yet" },
+    mediaTitle: "Promotional media",
+    mediaIntro: "Images, videos and texts ready to promote each site. Download the file and copy the text: your personal link is already in it. A link cannot be placed inside images or videos: paste it in the post caption.",
+    mediaEmpty: "No content for this site yet.",
+    mediaDownload: "Download",
+    mediaCopyText: "Copy text with my link",
+    mediaCopyLink: "Copy my link",
+    mediaTextOnly: "Text",
     salesTitle: "Attributed sales",
     salesCols: ["Date", "Customer", "Description", "Fee", "Status"],
     salesEmpty: "No sales yet.",
@@ -120,6 +142,7 @@ export const PANEL: Record<Lang, PanelText> = {
       { target: "stats", title: "Your earnings", text: "\"Pending\" is the fee on recent sales: it vests after 30 days without a refund. \"Vested\" is what we owe you. \"Already paid\" is what you have received." },
       { target: "links", title: "Your personal links", text: "One for each website. Copy them with one click and use them in your videos, posts and messages. Anyone who opens them is recognised as your referral." },
       { target: "how", title: "How sales are linked to you", text: "Anyone who opens your link leaves their email, then is taken to the website. When they buy with the same email, the sale shows up here. The first partner who referred the person wins, for 12 months." },
+      { target: "media", title: "Promotional media", text: "Ready-made images, videos and texts, split by site. Download the files and copy the texts: your personal link is already included." },
       { target: "contacts", title: "Registered emails", text: "Here you see who left their email through your links, even if they have not bought yet. If they later buy with the same email, the sale appears in your attributed sales." },
       { target: "sales", title: "Attributed sales", text: "Each row is a sale that came through you, with its fee and status. Customer emails must be used only for this programme." },
       { target: "payouts", title: "Payments", text: "Once a month we close the accounts and pay what has vested, from €50 upwards. Here you find every payment with its date." },

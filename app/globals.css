@@ -214,3 +214,13 @@ dialog.confirm h3 { margin-bottom: 8px; }
 .pop .go { width: 100%; margin-top: 16px; padding: 13px 18px; font-size: 16px; }
 .pop input[type="email"]:focus { border-color: var(--c); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Media per la promozione */
+.media-site h3 { margin: 0 0 12px; }
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.media-item { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+.media-item img, .media-item video { width: 100%; max-height: 260px; object-fit: cover; background: #0b0b1a; display: block; }
+.media-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; }
+.media-text { white-space: pre-wrap; margin: 0; font-size: 14px; max-height: 9em; overflow: auto; background: var(--paper); border-radius: 8px; padding: 8px 10px; overflow-wrap: anywhere; }
+.media-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.media-actions .btn { text-decoration: none; }

@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/admin", label: "Riepilogo" },
   { href: "/admin/partners", label: "Partner e link" },
   { href: "/admin/contacts", label: "Contatti" },
+  { href: "/admin/media", label: "Media" },
   { href: "/admin/sales", label: "Vendite" },
   { href: "/admin/payouts", label: "Pagamenti" },
 ];
