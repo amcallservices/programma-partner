@@ -11,7 +11,7 @@ export default function Home() {
       <Glow />
       <header className="hero-home" data-glow>
         <div>
-          <h1>Porta nuovi scrittori ai nostri cinque siti e guadagna il 10% su ogni vendita.</h1>
+          <h1>Porta nuovi utenti ai nostri siti e guadagna.</h1>
           <p className="lead" style={{ marginTop: 18 }}>
             Ricevi un link personale per ciascun sito. Quando una persona arriva dal tuo link e acquista, il compenso è tuo. Non
             serve modificare nessun sito e non ci sono codici sconto da gestire.
