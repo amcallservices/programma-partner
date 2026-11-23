@@ -2,6 +2,7 @@ import Link from "next/link";
 import Shelf from "./Shelf";
 import Simulator from "./Simulator";
 import Glow from "./Glow";
+import HowSlides from "./HowSlides";
 
 const MAIL = "amcall.services@gmail.com";
 
@@ -31,6 +32,9 @@ export default function Home() {
         <div className="card" data-glow><h3>Le vendite si collegano a te</h3><p className="muted" style={{ marginTop: 6 }}>Riconosciamo l&apos;acquisto dall&apos;email. Vale il primo partner che ha segnalato quella persona, per 12 mesi.</p></div>
         <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 15% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
       </div>
+
+      <h2 id="guarda">Guarda come funziona, passo passo</h2>
+      <HowSlides />
 
       <h2 id="calcolo">Quanto puoi guadagnare</h2>
       <div className="card" data-glow><Simulator /></div>
