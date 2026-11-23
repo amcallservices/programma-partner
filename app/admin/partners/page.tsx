@@ -37,7 +37,7 @@ export default async function Partners({
           <div><label htmlFor="name">Nome partner</label><input id="name" name="name" required /></div>
           <div><label htmlFor="email">Email (facoltativa)</label><input id="email" name="email" type="email" /></div>
           <PasswordField id="newpw" label="Password del partner" />
-          <div><label htmlFor="pct">Compenso %</label><input id="pct" name="pct" defaultValue="10" inputMode="decimal" /></div>
+          <div><label htmlFor="pct">Compenso %</label><input id="pct" name="pct" defaultValue="15" inputMode="decimal" /></div>
           <div className="auto"><button type="submit">Crea partner</button></div>
         </form>
 

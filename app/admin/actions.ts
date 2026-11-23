@@ -36,7 +36,7 @@ export async function createPartner(formData: FormData) {
   requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
   const email = normalizeEmail(String(formData.get("email") ?? ""));
-  const pct = Number(String(formData.get("pct") ?? "10").replace(",", "."));
+  const pct = Number(String(formData.get("pct") ?? "15").replace(",", "."));
   const pw = String(formData.get("password") ?? "");
   if (!name) redirect("/admin/partners?err=nome");
   if (pw.length < MIN_PW) redirect("/admin/partners?err=" + encodeURIComponent(`La password deve avere almeno ${MIN_PW} caratteri`));
@@ -55,7 +55,7 @@ export async function createPartner(formData: FormData) {
     token: randomBytes(18).toString("hex"),
     pw_hash: hashPassword(pw),
     pw_set_at: new Date().toISOString(),
-    commission_pct: Number.isFinite(pct) && pct >= 0 && pct <= 100 ? pct : 10,
+    commission_pct: Number.isFinite(pct) && pct >= 0 && pct <= 100 ? pct : 15,
   });
   if (error) redirect(`/admin/partners?err=${encodeURIComponent(error.message)}`);
   revalidatePath("/admin/partners");
@@ -171,7 +171,7 @@ export async function assignSale(formData: FormData) {
     const { data: p } = await supa.from("partners").select("commission_pct").eq("id", partnerId).maybeSingle();
     await supa
       .from("sales")
-      .update({ partner_id: partnerId, lead_id: null, commission_pct: p?.commission_pct ?? 10, attribution: "manuale" })
+      .update({ partner_id: partnerId, lead_id: null, commission_pct: p?.commission_pct ?? 15, attribution: "manuale" })
       .eq("id", saleId);
   }
   revalidatePath("/admin/sales");

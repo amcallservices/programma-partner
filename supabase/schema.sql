@@ -9,7 +9,7 @@ create table if not exists partners (
   email text,
   code text not null unique,            -- usato nei link: /go/<code>/<sito>
   token text not null unique,           -- accesso privato al pannello: /p/<token>
-  commission_pct numeric(5,2) not null default 10,
+  commission_pct numeric(5,2) not null default 15,
   active boolean not null default true,
   created_at timestamptz not null default now()
 );

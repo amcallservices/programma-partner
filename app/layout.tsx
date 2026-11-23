@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Programma partner - Ecosistema Self Publishing",
-  description: "Segnala i cinque siti dell'ecosistema Self Publishing e ricevi il 10% su ogni vendita.",
+  description: "Segnala i cinque siti dell'ecosistema Self Publishing e ricevi il 15% su ogni vendita.",
   robots: { index: false, follow: false },
 };
 

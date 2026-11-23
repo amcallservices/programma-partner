@@ -282,3 +282,11 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 
 .tip-warn { font-size: 13px; font-weight: 600; color: #7c2d12; background: #fff7ed; border: 1px solid #fdba74; border-radius: 8px; padding: 6px 10px; }
 .tour-pop p { white-space: pre-line; }
+
+/* Simulatore: scenari e dettaglio per vendita */
+.scen { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.scen button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.sim .split { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, .25); display: grid; gap: 4px; font-size: 14px; }
+.sim .split div { display: flex; justify-content: space-between; gap: 12px; }
+.sim .split dt, .sim .split dd { margin: 0; }
+.sim .split .mine { font-weight: 700; }

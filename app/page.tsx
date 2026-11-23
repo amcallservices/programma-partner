@@ -29,7 +29,7 @@ export default function Home() {
         <div className="card" data-glow><h3>Ricevi il tuo pannello</h3><p className="muted" style={{ marginTop: 6 }}>Ti inviamo un indirizzo privato con i tuoi cinque link e un tour guidato che spiega ogni numero.</p></div>
         <div className="card" data-glow><h3>Condividi i link</h3><p className="muted" style={{ marginTop: 6 }}>Chi li apre lascia la sua email e viene portato subito sul sito scelto.</p></div>
         <div className="card" data-glow><h3>Le vendite si collegano a te</h3><p className="muted" style={{ marginTop: 6 }}>Riconosciamo l&apos;acquisto dall&apos;email. Vale il primo partner che ha segnalato quella persona, per 12 mesi.</p></div>
-        <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 10% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
+        <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 15% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
       </div>
 
       <h2 id="calcolo">Quanto puoi guadagnare</h2>
