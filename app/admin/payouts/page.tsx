@@ -57,7 +57,7 @@ export default async function Payouts({ searchParams }: { searchParams: { msg?: 
             </tbody>
           </table>
         </div>
-        <p className="muted">Il pagamento vero (bonifico o PayPal) lo fai tu fuori dall'app: qui lo registri come pagato.</p>
+        <p className="muted">Il pagamento vero (bonifico all'IBAN che il partner ha inserito nel suo profilo) lo fai tu fuori dall'app: qui lo registri come pagato.</p>
       </div>
     </>
   );
