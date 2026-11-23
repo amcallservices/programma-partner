@@ -1,0 +1,21 @@
+# Programma partner - Ecosistema Self Publishing
+
+> Programma di affiliazione italiano: il partner condivide un link personale per ciascun sito dell'ecosistema Self Publishing e riceve il 15% sul netto di ogni acquisto fatto da chi ha portato.
+
+## Come funziona
+- Il partner riceve un pannello privato con i link personali dei cinque siti.
+- Chi apre il link lascia l'email e viene portato sul sito scelto; l'acquisto viene collegato al partner tramite l'email (primo partner che ha segnalato la persona, valido 12 mesi).
+- Compenso: 15% sul netto incassato (dopo le commissioni di pagamento), uguale per tutti i siti.
+- Il compenso matura dopo 30 giorni (periodo di rimborso) e viene pagato ogni mese con bonifico su IBAN, quando il maturato raggiunge 50 €.
+- Non servono modifiche ai siti né codici sconto. I guadagni non sono garantiti: dipendono dall'impegno del partner.
+
+## I cinque siti
+- Scrittore Site (sito): https://scrittore.site - scrivere un libro con l'AI, a crediti.
+- Scrittore Site (software): https://scrittoresite.streamlit.app - il software con chat guidata per scrivere libri.
+- Liberamente: https://liberamente.site - store di ebook di autori indipendenti, 50% di royalty agli autori.
+- Self Publishing Italia: https://selfpublishingitalia.site - community, corsi e consulenze sul self publishing.
+- BOOST AI: https://boost-ai-two.vercel.app - marketing con agenti AI, a crediti.
+
+## Pagine
+- Home: https://programma-partner.vercel.app/
+- Privacy: https://programma-partner.vercel.app/privacy

@@ -2,6 +2,8 @@ import { cookies } from "next/headers";
 import { pickLang } from "@/lib/i18n";
 import LangSwitch from "../LangSwitch";
 
+export const metadata = { title: "Informativa privacy", alternates: { canonical: "/privacy" } };
+
 export default function Privacy({ searchParams }: { searchParams: { lang?: string } }) {
   const lang = pickLang(searchParams.lang, cookies().get("pp-lang")?.value);
   const owner = process.env.OWNER_NAME || "Antonino Stramera, via della Cooperazione 5, 52021 Bucine (AR)";

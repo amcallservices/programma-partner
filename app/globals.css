@@ -408,3 +408,7 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .ss-ex li { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: rgba(255, 255, 255, .08); border-radius: 8px; padding: 7px 10px; }
 .ss-ex .g { color: #86efac; font-weight: 700; }
 .ss-det > dd > .ss-small { display: block; }
+
+.brand { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.01em; position: relative; }
+.brand b { color: #93b4ff; font-weight: 800; }
+.brand img { border-radius: 11px; display: block; }
