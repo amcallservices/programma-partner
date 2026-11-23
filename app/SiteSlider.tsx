@@ -19,10 +19,24 @@ export default function SiteSlider() {
   const track = useRef<HTMLDivElement>(null);
   const root = useRef<HTMLDivElement>(null);
   const [i, setI] = useState(0);
-  const [loaded, setLoaded] = useState<number[]>([0, 1]);
+  const [loaded, setLoaded] = useState<number[]>([]);
+  const [live, setLive] = useState(false);
   const [hold, setHold] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [k, setK] = useState(0.4);
+
+  // Le anteprime sono siti veri e pesanti: si caricano solo quando lo slider è visibile e la pagina è già pronta.
+  useEffect(() => {
+    const el = root.current; if (!el) return;
+    let off = false, io: IntersectionObserver | null = null;
+    const start = () => {
+      if (off) return;
+      io = new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) { setLive(true); io?.disconnect(); } }, { rootMargin: "200px" });
+      io.observe(el);
+    };
+    if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
+    return () => { off = true; io?.disconnect(); window.removeEventListener("load", start); };
+  }, []);
 
   useEffect(() => { setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches); }, []);
 
@@ -33,10 +47,18 @@ export default function SiteSlider() {
     return () => ro.disconnect();
   }, []);
 
+  // prima il sito in vista; il successivo solo dopo qualche secondo, per non caricare tutto insieme
+  useEffect(() => {
+    if (!live) return;
+    setLoaded((l) => (l.includes(i) ? l : [...l, i]));
+    const nx = (i + 1) % SITES.length;
+    const t = setTimeout(() => setLoaded((l) => (l.includes(nx) ? l : [...l, nx])), 3000);
+    return () => clearTimeout(t);
+  }, [live, i]);
+
   const select = useCallback((n: number, scroll = true) => {
     const idx = (n + SITES.length) % SITES.length;
     setI(idx);
-    setLoaded((l) => Array.from(new Set([...l, idx, (idx + 1) % SITES.length])));
     root.current?.closest<HTMLElement>(".hero-home")?.style.setProperty("--glow", LIGHT[SITES[idx].key] ?? "#7c7cff");
     const el = track.current;
     if (scroll && el) el.scrollTo({ left: idx * el.clientWidth, behavior: reduced ? "auto" : "smooth" });
