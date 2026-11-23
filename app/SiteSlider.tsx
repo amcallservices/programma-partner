@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SITES } from "@/lib/sites";
+import { DETAIL, SITES } from "@/lib/sites";
 
 const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
 const GRAD: Record<string, string> = {
@@ -52,6 +52,7 @@ export default function SiteSlider() {
   }, [i, hold, reduced, select]);
 
   const s = SITES[i];
+  const d = DETAIL[s.key];
   return (
     <div ref={root} className="ss" aria-roledescription="carousel" aria-label="I cinque siti da promuovere"
       onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}
@@ -86,8 +87,11 @@ export default function SiteSlider() {
 
       <div className="shelfinfo" aria-live="polite">
         <h3 style={{ color: LIGHT[s.key] }}>{s.name}</h3>
-        <p style={{ margin: "6px 0 0" }}>{s.pitch}</p>
-        <ul>{s.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+                <dl className="ss-det">
+          <dt>A cosa serve</dt><dd>{d.serve}</dd>
+          <dt>Cosa puoi fare</dt><dd><ul>{d.fare.map((b) => <li key={b}>{b}</li>)}</ul></dd>
+          <dt>Per chi è</dt><dd>{d.per}</dd>
+        </dl>
       </div>
     </div>
   );

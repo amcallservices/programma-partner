@@ -177,3 +177,32 @@ export const TIPS: Record<"it" | "en", Record<string, { who: string; ideas: stri
     },
   },
 };
+
+/** Descrizione estesa per la home: a cosa serve, cosa si può fare, per chi è. */
+export const DETAIL: Record<string, { serve: string; fare: string[]; per: string }> = {
+  seo: {
+    serve: "Ti guida a scrivere un libro con l'aiuto dell'AI, dall'idea al manoscritto, senza bisogno di saper scrivere prompt.",
+    fare: ["Sviluppare l'idea in una chat guidata", "Costruire l'indice e scrivere capitolo dopo capitolo", "Rivedere il testo ed esportarlo in Word o PDF", "Provare tutto con 50 crediti gratuiti"],
+    per: "Chi sogna di scrivere un libro e non sa da dove cominciare, e chi pubblica su Amazon KDP.",
+  },
+  soft: {
+    serve: "È il software completo per scrivere libri con l'AI: tutto in un unico posto, con il preventivo in crediti prima di ogni operazione.",
+    fare: ["Lavorare con chat guidata, indice, fonti e stesura", "Fare controlli di revisione e di originalità", "Seguire la checklist per la pubblicazione su KDP", "Esportare in Word o PDF e pagare solo i crediti usati"],
+    per: "Autori che vogliono più controllo sul proprio lavoro e preferiscono pagare solo quello che usano.",
+  },
+  lib: {
+    serve: "È lo store italiano di ebook di autori indipendenti: si legge e si acquista, ma si può anche pubblicare e vendere il proprio libro.",
+    fare: ["Scoprire e comprare ebook, che restano nella tua libreria", "Leggere gli ebook acquistati", "Pubblicare e vendere il tuo libro con il 50% di royalty", "Usare il sito in italiano e in inglese"],
+    per: "Lettori curiosi di nuovi autori italiani e autori indipendenti che vogliono vendere i propri libri.",
+  },
+  com: {
+    serve: "È la community degli scrittori italiani: un posto per imparare l'autopubblicazione e confrontarsi con chi ci è già passato.",
+    fare: ["Parlare con altri autori tra messaggi e Stories", "Seguire video corsi, eventi e webinar", "Prenotare consulenze in videochiamata con autori esperti"],
+    per: "Scrittori italiani, esordienti o già pubblicati, che vogliono crescere insieme ad altri.",
+  },
+  boost: {
+    serve: "Fa il marketing sui social al posto tuo con 10 agenti AI, senza abbonamento: si paga solo a crediti.",
+    fare: ["Creare immagini, caroselli e video", "Pubblicare su Facebook, Instagram, YouTube e TikTok", "Approvare ogni contenuto a mano o lasciarlo in pilota automatico", "Promuovere prodotti fisici o digitali, come libri, ebook e corsi"],
+    per: "Professionisti, piccole imprese e attività, autori e chiunque venda prodotti e voglia farsi conoscere online.",
+  },
+};
