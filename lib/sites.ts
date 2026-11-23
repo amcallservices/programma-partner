@@ -184,31 +184,31 @@ export const DETAIL: Record<string, { serve: string; fare: string[]; per: string
     serve: "Ti guida a scrivere un libro con l'aiuto dell'AI, dall'idea al manoscritto, senza bisogno di saper scrivere prompt.",
     fare: ["Sviluppare l'idea in una chat guidata", "Costruire l'indice e scrivere capitolo dopo capitolo", "Rivedere il testo ed esportarlo in Word o PDF", "Provare tutto con 50 crediti gratuiti"],
     per: "Chi sogna di scrivere un libro e non sa da dove cominciare, e chi pubblica su Amazon KDP.",
-    utente: "Pubblicando il libro che scrivi, per esempio su Amazon KDP, puoi guadagnare dalle sue vendite. Più libri riesci a scrivere, più possibilità hai.",
+    utente: "Pubblicando il libro che scrive, per esempio su Amazon KDP, l'utente può guadagnare dalle sue vendite. Più libri riesce a scrivere, più possibilità ha.",
   },
   soft: {
     serve: "È il software completo per scrivere libri con l'AI: tutto in un unico posto, con il preventivo in crediti prima di ogni operazione.",
     fare: ["Lavorare con chat guidata, indice, fonti e stesura", "Fare controlli di revisione e di originalità", "Seguire la checklist per la pubblicazione su KDP", "Esportare in Word o PDF e pagare solo i crediti usati"],
     per: "Autori che vogliono più controllo sul proprio lavoro e preferiscono pagare solo quello che usano.",
-    utente: "Scrivendo e pubblicando più libri in meno tempo puoi far crescere le tue entrate da autore, pagando solo i crediti che usi.",
+    utente: "Scrivendo e pubblicando più libri in meno tempo, l'utente può far crescere le sue entrate da autore, pagando solo i crediti che usa.",
   },
   lib: {
     serve: "È lo store italiano di ebook di autori indipendenti: si legge e si acquista, ma si può anche pubblicare e vendere il proprio libro.",
     fare: ["Scoprire e comprare ebook, che restano nella tua libreria", "Leggere gli ebook acquistati", "Pubblicare e vendere il tuo libro con il 50% di royalty", "Usare il sito in italiano e in inglese"],
     per: "Lettori curiosi di nuovi autori italiani e autori indipendenti che vogliono vendere i propri libri.",
-    utente: "Se sei autore, vendi i tuoi ebook e tieni il 50% di royalty su ogni copia. Se sei lettore, compri una volta e il libro resta tuo.",
+    utente: "Se è autore, l'utente vende i suoi ebook e tiene il 50% di royalty su ogni copia. Se è lettore, compra una volta e il libro resta suo.",
   },
   com: {
     serve: "È la community degli scrittori italiani: un posto per imparare l'autopubblicazione e confrontarsi con chi ci è già passato.",
     fare: ["Parlare con altri autori tra messaggi e Stories", "Seguire video corsi, eventi e webinar", "Prenotare consulenze in videochiamata con autori esperti"],
     per: "Scrittori italiani, esordienti o già pubblicati, che vogliono crescere insieme ad altri.",
-    utente: "Imparando a pubblicare e a promuovere meglio i tuoi libri puoi aumentare le vendite, con l'aiuto di corsi, community e consulenze.",
+    utente: "Imparando a pubblicare e a promuovere meglio i propri libri, l'utente può aumentare le vendite, con l'aiuto di corsi, community e consulenze.",
   },
   boost: {
     serve: "Fa il marketing sui social al posto tuo con 10 agenti AI, senza abbonamento: si paga solo a crediti.",
     fare: ["Creare immagini, caroselli e video", "Pubblicare su Facebook, Instagram, YouTube e TikTok", "Approvare ogni contenuto a mano o lasciarlo in pilota automatico", "Promuovere prodotti fisici o digitali, come libri, ebook e corsi"],
     per: "Professionisti, piccole imprese e attività, autori e chiunque venda prodotti e voglia farsi conoscere online.",
-    utente: "Fai conoscere la tua attività o i tuoi prodotti sui social con meno tempo e meno costi, e attiri più clienti.",
+    utente: "L'utente fa conoscere la propria attività o i propri prodotti sui social con meno tempo e meno costi, e attira più clienti.",
   },
 };
 
