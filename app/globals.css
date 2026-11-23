@@ -402,3 +402,9 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 
 .ss-det dt.pt, .ss-det .ss-small { font-size: 12px; }
 .ss-det .ss-small { color: #aab0e6; margin-top: 6px; }
+
+.ss-exh { display: block; font-weight: 600; color: #fff; margin: 4px 0 2px; }
+.ss-ex { list-style: none; padding: 0; margin: 4px 0 6px; display: grid; gap: 6px; }
+.ss-ex li { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: rgba(255, 255, 255, .08); border-radius: 8px; padding: 7px 10px; }
+.ss-ex .g { color: #86efac; font-weight: 700; }
+.ss-det > dd > .ss-small { display: block; }

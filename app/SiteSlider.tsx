@@ -1,13 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { DETAIL, SITES } from "@/lib/sites";
+import { DETAIL, ESEMPI, SITES } from "@/lib/sites";
 
 const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
 const GRAD: Record<string, string> = {
   seo: "linear-gradient(135deg,#0f766e,#134e4a)", soft: "linear-gradient(135deg,#2563eb,#1e3a8a)", lib: "linear-gradient(135deg,#ea580c,#9a3412)",
   com: "linear-gradient(135deg,#4f46c8,#1b1464)", boost: "linear-gradient(135deg,#7c3aed,#4c1d95)",
 };
+const PCT = 15;
+const eur = (n: number) => n.toLocaleString("it-IT", { style: "currency", currency: "EUR" });
+/** Compenso stimato: 15% sul netto, cioè dopo circa 1,5% + 0,25 € di commissioni di pagamento; arrotondato per difetto al centesimo. */
+const gain = (price: number) => Math.floor(Math.max(price - (price * 0.015 + 0.25), 0) * PCT) / 100;
 const W = 1280, H = 800, MS = 6500;
 
 /** Slide scorrevoli: ogni sito è mostrato dal vivo in una finestra di browser (non cliccabile), con descrizione sotto. */
@@ -92,7 +96,17 @@ export default function SiteSlider() {
           <dt>Cosa puoi fare</dt><dd><ul>{d.fare.map((b) => <li key={b}>{b}</li>)}</ul></dd>
           <dt>Per chi è</dt><dd>{d.per}</dd>
           <dt>Come può guadagnare un utente</dt><dd>{d.utente}</dd>
-          <dt>Come puoi guadagnare tu, partner</dt><dd>Porti le persone con il tuo link personale: ricevi il 15% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</dd>
+          <dt>Come puoi guadagnare tu, partner</dt>
+          <dd>Porti le persone con il tuo link personale: ricevi il {PCT}% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</dd>
+          <dd>
+            <span className="ss-exh">Esempi con i pacchetti del sito:</span>
+            <ul className="ss-ex">
+              {ESEMPI[s.key].map((e) => (
+                <li key={e.nome}><span>{e.nome}{e.dettaglio ? `, ${e.dettaglio}` : ""}: <b>{eur(e.prezzo)}</b></span><span className="g">tu guadagni circa {eur(gain(e.prezzo))}</span></li>
+              ))}
+            </ul>
+            <span className="ss-small">Il {PCT}% è calcolato sul netto, cioè dopo le commissioni di pagamento: per questo l&apos;importo è un po&apos; sotto il {PCT}% del prezzo. Per 12 mesi vale ogni acquisto fatto da chi hai portato tu.</span>
+          </dd>
           <dd className="ss-small">Stime e possibilità non sono una promessa di guadagno: i risultati dipendono dal tuo impegno.</dd>
         </dl>
       </div>

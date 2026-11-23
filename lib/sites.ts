@@ -211,3 +211,34 @@ export const DETAIL: Record<string, { serve: string; fare: string[]; per: string
     utente: "Fai conoscere la tua attività o i tuoi prodotti sui social con meno tempo e meno costi, e attiri più clienti.",
   },
 };
+
+/** Pacchetti e prezzi pubblici dei siti, usati negli esempi di compenso (verificati sulle pagine dei siti il 23/11/2026). */
+export const ESEMPI: Record<string, { nome: string; dettaglio?: string; prezzo: number }[]> = {
+  seo: [
+    { nome: "Base", dettaglio: "150 crediti", prezzo: 10 },
+    { nome: "Creator", dettaglio: "375 crediti", prezzo: 25 },
+    { nome: "Studio", dettaglio: "750 crediti", prezzo: 50 },
+    { nome: "Professionale", dettaglio: "1.500 crediti", prezzo: 100 },
+  ],
+  soft: [
+    { nome: "Base", dettaglio: "150 crediti", prezzo: 10 },
+    { nome: "Creator", dettaglio: "375 crediti", prezzo: 25 },
+    { nome: "Studio", dettaglio: "750 crediti", prezzo: 50 },
+    { nome: "Professionale", dettaglio: "1.500 crediti", prezzo: 100 },
+  ],
+  lib: [
+    { nome: "Un ebook", dettaglio: "esempio da 5 €", prezzo: 5 },
+    { nome: "Liberamente Plus", dettaglio: "3 libri al mese", prezzo: 4.99 },
+  ],
+  com: [
+    { nome: "Consulenza lampo", dettaglio: "30 minuti", prezzo: 200 },
+    { nome: "Consulenza completa", dettaglio: "60 minuti", prezzo: 350 },
+    { nome: "Consulenza approfondita", dettaglio: "90 minuti", prezzo: 500 },
+  ],
+  boost: [
+    { nome: "Starter", dettaglio: "150 crediti", prezzo: 9.9 },
+    { nome: "Crescita", dettaglio: "380 crediti", prezzo: 24.9 },
+    { nome: "Pro", dettaglio: "770 crediti", prezzo: 49.9 },
+    { nome: "Agenzia", dettaglio: "1.550 crediti", prezzo: 99 },
+  ],
+};
