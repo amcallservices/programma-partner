@@ -91,6 +91,9 @@ export default function SiteSlider() {
           <dt>A cosa serve</dt><dd>{d.serve}</dd>
           <dt>Cosa puoi fare</dt><dd><ul>{d.fare.map((b) => <li key={b}>{b}</li>)}</ul></dd>
           <dt>Per chi è</dt><dd>{d.per}</dd>
+          <dt>Come puoi guadagnare tu, utente</dt><dd>{d.utente}</dd>
+          <dt>Come puoi guadagnare tu, partner</dt><dd>Porti le persone con il tuo link personale: ricevi il 15% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</dd>
+          <dd className="ss-small">Stime e possibilità non sono una promessa di guadagno: i risultati dipendono dal tuo impegno.</dd>
         </dl>
       </div>
     </div>

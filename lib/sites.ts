@@ -179,11 +179,16 @@ export const TIPS: Record<"it" | "en", Record<string, { who: string; ideas: stri
 };
 
 /** Descrizione estesa per la home: a cosa serve, cosa si può fare, per chi è. */
-export const DETAIL: Record<string, { serve: string; fare: string[]; per: string }> = {
+export const DETAIL: Record<string, { serve: string; fare: string[]; per: string; utente: string }> = {
   seo: {
     serve: "Ti guida a scrivere un libro con l'aiuto dell'AI, dall'idea al manoscritto, senza bisogno di saper scrivere prompt.",
     fare: ["Sviluppare l'idea in una chat guidata", "Costruire l'indice e scrivere capitolo dopo capitolo", "Rivedere il testo ed esportarlo in Word o PDF", "Provare tutto con 50 crediti gratuiti"],
     per: "Chi sogna di scrivere un libro e non sa da dove cominciare, e chi pubblica su Amazon KDP.",
+    utente: "Fai conoscere la tua attività o i tuoi prodotti sui social con meno tempo e meno costi, e attiri più clienti.",
+    utente: "Imparando a pubblicare e a promuovere meglio i tuoi libri puoi aumentare le vendite, con l'aiuto di corsi, community e consulenze.",
+    utente: "Se sei autore, vendi i tuoi ebook e tieni il 50% di royalty su ogni copia. Se sei lettore, compri una volta e il libro resta tuo.",
+    utente: "Scrivendo e pubblicando più libri in meno tempo puoi far crescere le tue entrate da autore, pagando solo i crediti che usi.",
+    utente: "Pubblicando il libro che scrivi, per esempio su Amazon KDP, puoi guadagnare dalle sue vendite. Più libri riesci a scrivere, più possibilità hai.",
   },
   soft: {
     serve: "È il software completo per scrivere libri con l'AI: tutto in un unico posto, con il preventivo in crediti prima di ogni operazione.",
