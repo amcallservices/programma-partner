@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Shelf from "./Shelf";
 import Simulator from "./Simulator";
 import Glow from "./Glow";
@@ -45,7 +44,7 @@ export default function Home() {
       <details className="faq"><summary>Posso vedere cosa ho guadagnato?</summary><p>Sì. Nel tuo pannello vedi click, email raccolte, vendite e compensi in tempo reale, con gli stati in attesa, maturato e pagato.</p></details>
 
       <p className="foot">
-        Programma partner dell&apos;ecosistema Self Publishing · <Link href="/privacy">Privacy</Link>
+        Programma partner dell&apos;ecosistema Self Publishing
       </p>
     </div>
   );
