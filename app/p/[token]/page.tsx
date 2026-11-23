@@ -7,6 +7,7 @@ import { LOCK, PANEL, PROFILE, dateFmt, money, pickLang } from "@/lib/i18n";
 import { isPartnerUnlocked } from "@/lib/partnerAuth";
 import Link from "next/link";
 import Gate from "./Gate";
+import { partnerLogout } from "./actions";
 import LangSwitch from "../../LangSwitch";
 import CopyButton from "../../CopyButton";
 import Tour from "./Tour";
@@ -63,6 +64,11 @@ export default async function PartnerPage({
           <a className="btn ghost small" href="/">{LOCK[lang].home}</a>
           <Link className="btn ghost small" data-tour="profile" href={`/p/${partner.token}/profilo${lq}`}>{P.button}</Link>
           <a className="btn wa" data-tour="wa" href={`https://wa.me/393282693777?text=${encodeURIComponent(T.waMsg(partner.name))}`} target="_blank" rel="noopener noreferrer">{T.waLabel}</a>
+          <form action={partnerLogout} style={{ display: "inline" }}>
+            <input type="hidden" name="token" value={partner.token} />
+            <input type="hidden" name="lang" value={lang} />
+            <button type="submit" className="ghost small">{P.logout}</button>
+          </form>
           <Tour steps={T.steps} ui={T.tourUi} label={T.tour} />
         </div>
       </div>

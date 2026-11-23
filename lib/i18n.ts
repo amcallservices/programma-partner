@@ -261,6 +261,7 @@ export const LOCK = {
 export const PROFILE = {
   it: {
     button: "Profilo",
+    logout: "Esci",
     title: "Il tuo profilo",
     intro: "Questi dati servono solo per pagarti i compensi. Li vede solo l'amministratore del programma e sono dietro la tua password.",
     back: "← Torna al pannello",
@@ -277,6 +278,7 @@ export const PROFILE = {
   },
   en: {
     button: "Profile",
+    logout: "Log out",
     title: "Your profile",
     intro: "This data is used only to pay your fees. Only the programme administrator can see it, and it sits behind your password.",
     back: "← Back to dashboard",

@@ -3,7 +3,8 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/supabase";
-import { isPartnerUnlocked, normalizeIban, openPartnerSession, verifyPassword } from "@/lib/partnerAuth";
+import { cookies } from "next/headers";
+import { cookieName, isPartnerUnlocked, normalizeIban, openPartnerSession, verifyPassword } from "@/lib/partnerAuth";
 
 const MAX_FAILS = 5;
 const LOCK_MIN = 15;
@@ -60,4 +61,11 @@ export async function saveProfile(formData: FormData) {
   if (error) err("save");
   revalidatePath("/admin/profiles");
   redirect(back(token, "profilo", lang, "saved=1"));
+}
+
+export async function partnerLogout(formData: FormData) {
+  const token = String(formData.get("token") ?? "");
+  const lang = String(formData.get("lang") ?? "it");
+  if (token) cookies().set(cookieName(token), "", { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: `/p/${token}`, maxAge: 0 });
+  redirect(back(token, "", lang));
 }

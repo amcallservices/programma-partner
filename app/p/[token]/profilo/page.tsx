@@ -6,7 +6,7 @@ import { PANEL, PROFILE, dateFmt, pickLang } from "@/lib/i18n";
 import { isPartnerUnlocked } from "@/lib/partnerAuth";
 import LangSwitch from "../../../LangSwitch";
 import Gate from "../Gate";
-import { saveProfile } from "../actions";
+import { partnerLogout, saveProfile } from "../actions";
 
 export const dynamic = "force-dynamic";
 export const metadata = { robots: { index: false, follow: false } };
@@ -26,7 +26,14 @@ export default async function ProfilePage({ params, searchParams }: { params: { 
     <div className="wrap" style={{ maxWidth: 720 }}>
       <div className="helpbar">
         <Link href={`/p/${partner.token}${q}`}>{P.back}</Link>
-        <LangSwitch lang={lang} label={PANEL[lang].langLabel} />
+        <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+          <LangSwitch lang={lang} label={PANEL[lang].langLabel} />
+          <form action={partnerLogout} style={{ display: "inline" }}>
+            <input type="hidden" name="token" value={partner.token} />
+            <input type="hidden" name="lang" value={lang} />
+            <button type="submit" className="ghost small">{P.logout}</button>
+          </form>
+        </div>
       </div>
       <h1>{P.title}</h1>
       <p className="lead">{P.intro}</p>
