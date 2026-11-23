@@ -43,7 +43,7 @@ export default function Home() {
       <details className="faq"><summary>Posso vedere cosa ho guadagnato?</summary><p>Sì. Nel tuo pannello vedi click, email raccolte, vendite e compensi in tempo reale, con gli stati in attesa, maturato e pagato.</p></details>
 
       <p className="foot">
-        Programma partner dell&apos;ecosistema Self Publishing · <a href={`mailto:${MAIL}`}>{MAIL}</a> · <Link href="/privacy">Privacy</Link> · <Link href="/admin">Area amministratore</Link>
+        Programma partner dell&apos;ecosistema Self Publishing · <a href={`mailto:${MAIL}`}>{MAIL}</a> · <Link href="/privacy">Privacy</Link>
       </p>
     </div>
   );
