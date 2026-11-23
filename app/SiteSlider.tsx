@@ -61,54 +61,68 @@ export default function SiteSlider() {
     <div ref={root} className="ss" aria-roledescription="carousel" aria-label="I cinque siti da promuovere"
       onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}
       onKeyDown={(e) => { if (e.key === "ArrowRight") select(i + 1); if (e.key === "ArrowLeft") select(i - 1); }}>
-      <div className="ss-track" ref={track} onScroll={onScroll}>
-        {SITES.map((x, n) => (
-          <div className="ss-slide" key={x.key} role="group" aria-roledescription="slide" aria-label={`${n + 1} di ${SITES.length}: ${x.name}`} aria-hidden={n !== i}>
-            <div className="ss-win">
-              <div className="ss-bar"><i /><i /><i /><span>{x.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span></div>
-              <div className="ss-view" style={{ background: GRAD[x.key] }}>
-                <b className="ss-name">{x.name}</b>
-                {loaded.includes(n) && (
-                  <iframe title={`Anteprima di ${x.name}`} src={x.key === "soft" ? `${x.url}?embed=true` : x.url} loading="lazy" tabIndex={-1}
-                    sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer"
-                    style={{ width: W, height: H, transform: `scale(${k})` }} />
-                )}
+      <div className="ss-main">
+        <div className="ss-showcase">
+          <div className="ss-track" ref={track} onScroll={onScroll}>
+            {SITES.map((x, n) => (
+              <div className="ss-slide" key={x.key} role="group" aria-roledescription="slide" aria-label={`${n + 1} di ${SITES.length}: ${x.name}`} aria-hidden={n !== i}>
+                <div className="ss-win">
+                  <div className="ss-bar"><i /><i /><i /><span>{x.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span></div>
+                  <div className="ss-view" style={{ background: GRAD[x.key] }}>
+                    <b className="ss-name">{x.name}</b>
+                    {loaded.includes(n) && (
+                      <iframe title={`Anteprima di ${x.name}`} src={x.key === "soft" ? `${x.url}?embed=true` : x.url} loading="lazy" tabIndex={-1}
+                        sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer"
+                        style={{ width: W, height: H, transform: `scale(${k})` }} />
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      <div className="ss-ctl">
-        <button type="button" className="ghost small" onClick={() => select(i - 1)} aria-label="Sito precedente">←</button>
-        <div className="ss-dots" role="tablist" aria-label="Siti">
-          {SITES.map((x, n) => (
-            <button key={x.key} type="button" role="tab" aria-selected={n === i} aria-label={x.name} className={n === i ? "on" : ""} style={{ ["--c" as string]: LIGHT[x.key] }} onClick={() => select(n)} />
-          ))}
-        </div>
-        <button type="button" className="ghost small" onClick={() => select(i + 1)} aria-label="Sito successivo">→</button>
-      </div>
-
-      <div className="shelfinfo" aria-live="polite">
-        <h3 style={{ color: LIGHT[s.key] }}>{s.name}</h3>
-                <dl className="ss-det">
-          <dt>A cosa serve</dt><dd>{d.serve}</dd>
-          <dt>Cosa puoi fare</dt><dd><ul>{d.fare.map((b) => <li key={b}>{b}</li>)}</ul></dd>
-          <dt>Per chi è</dt><dd>{d.per}</dd>
-          <dt>Come può guadagnare un utente</dt><dd>{d.utente}</dd>
-          <dt>Come puoi guadagnare tu, partner</dt>
-          <dd>Porti le persone con il tuo link personale: ricevi il {PCT}% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</dd>
-          <dd>
-            <span className="ss-exh">Esempi con i pacchetti del sito:</span>
-            <ul className="ss-ex">
-              {ESEMPI[s.key].map((e) => (
-                <li key={e.nome}><span>{e.nome}{e.dettaglio ? `, ${e.dettaglio}` : ""}: <b>{eur(e.prezzo)}</b></span><span className="g">tu guadagni circa {eur(gain(e.prezzo))}</span></li>
+          <div className="ss-ctl">
+            <button type="button" className="ghost small" onClick={() => select(i - 1)} aria-label="Sito precedente">←</button>
+            <div className="ss-dots" role="tablist" aria-label="Siti">
+              {SITES.map((x, n) => (
+                <button key={x.key} type="button" role="tab" aria-selected={n === i} aria-label={x.name} className={n === i ? "on" : ""} style={{ ["--c" as string]: LIGHT[x.key] }} onClick={() => select(n)} />
               ))}
-            </ul>
-            <span className="ss-small">Il {PCT}% è calcolato sul netto, cioè dopo le commissioni di pagamento: per questo l&apos;importo è un po&apos; sotto il {PCT}% del prezzo. Per 12 mesi vale ogni acquisto fatto da chi hai portato tu.</span>
-          </dd>
-          <dd className="ss-small">Stime e possibilità non sono una promessa di guadagno: i risultati dipendono dal tuo impegno.</dd>
-        </dl>
+            </div>
+            <button type="button" className="ghost small" onClick={() => select(i + 1)} aria-label="Sito successivo">→</button>
+          </div>
+        </div>
+
+        <div className="ss-about" aria-live="polite">
+          <h3 style={{ color: LIGHT[s.key] }}>{s.name}</h3>
+          <h4>A cosa serve</h4>
+          <p>{d.serve}</p>
+          <h4>Cosa puoi fare</h4>
+          <ul>{d.fare.map((b) => <li key={b}>{b}</li>)}</ul>
+          <h4>Per chi è</h4>
+          <p>{d.per}</p>
+        </div>
+      </div>
+
+      <div className="ss-earn">
+        <section className="ss-card">
+          <h4>Come può guadagnare un utente</h4>
+          <p>{d.utente}</p>
+        </section>
+        <section className="ss-card ss-partner">
+          <h4>Come puoi guadagnare tu, partner</h4>
+          <p>Porti le persone con il tuo link personale: ricevi il {PCT}% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</p>
+          <p className="ss-exh">Esempi con i pacchetti del sito</p>
+          <ul className="ss-ex">
+            {ESEMPI[s.key].map((e) => (
+              <li key={e.nome}>
+                <span className="n">{e.nome}{e.dettaglio ? <small>{e.dettaglio}</small> : null}</span>
+                <span className="p">{eur(e.prezzo)}</span>
+                <span className="g">tu guadagni circa <b>{eur(gain(e.prezzo))}</b></span>
+              </li>
+            ))}
+          </ul>
+          <p className="ss-small">Il {PCT}% è calcolato sul netto, cioè dopo le commissioni di pagamento: per questo l&apos;importo è un po&apos; sotto il {PCT}% del prezzo. Per 12 mesi vale ogni acquisto fatto da chi hai portato tu.</p>
+          <p className="ss-small">Stime e possibilità non sono una promessa di guadagno: i risultati dipendono dal tuo impegno.</p>
+        </section>
       </div>
     </div>
   );
