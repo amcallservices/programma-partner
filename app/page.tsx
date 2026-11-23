@@ -36,7 +36,7 @@ export default function Home() {
       <div className="card" data-glow><Simulator /></div>
 
       <h2>Domande frequenti</h2>
-      <details className="faq"><summary>Cosa devo fare per iniziare?</summary><p>Scrivici: ti mandiamo il contratto di collaborazione da compilare con i tuoi dati e il tuo pannello personale con i link.</p></details>
+      <details className="faq"><summary>Cosa devo fare per iniziare?</summary><p>Scrivici: fissiamo una call in cui ti spieghiamo come funziona tutto, rispondiamo alle tue domande e, se vuoi iniziare, ti diamo accesso al tuo pannello personale con i link da condividere.</p></details>
       <details className="faq"><summary>Perché il compenso matura dopo 30 giorni?</summary><p>È il tempo in cui un cliente può chiedere il rimborso. Se non c&apos;è rimborso, il compenso diventa pagabile; se c&apos;è, viene ridotto o annullato in proporzione.</p></details>
       <details className="faq"><summary>E se un cliente compra con un&apos;email diversa?</summary><p>Scrivici: controlliamo a mano e, se è una tua segnalazione, assegniamo la vendita al tuo pannello.</p></details>
       <details className="faq"><summary>Come mi pagate?</summary><p>Una volta al mese, per bonifico o PayPal, quando il maturato raggiunge i 50 €. Sotto quella cifra l&apos;importo si accumula.</p></details>
