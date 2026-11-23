@@ -118,6 +118,7 @@ export const PANEL: Record<Lang, PanelText> = {
     tourUi: { next: "Avanti", back: "Indietro", skip: "Salta", close: "Chiudi", of: "{a} di {b}" },
     steps: [
       { target: "", title: "Benvenuto nel tuo pannello", text: "In due minuti ti mostro dove vedere i tuoi guadagni e dove trovare i link da condividere. Puoi rivedere questa visita quando vuoi dal pulsante in alto." },
+      { target: "profile", title: "Il tuo profilo e i dati per i pagamenti", text: "Qui sopra trovi il pulsante «Profilo». Compilalo con nome, cognome, IBAN, banca di riferimento, cellulare e indirizzo: servono solo per pagarti i compensi.\n🔒 Sono dati sensibili: li vede solo l'amministratore del programma e la tua pagina è protetta dalla password che ti abbiamo dato. Non darla a nessuno.\n✅ L'IBAN deve essere intestato a te. Senza il profilo completo non possiamo effettuare i pagamenti." },
       { target: "wa", title: "Scrivimi su WhatsApp", text: "Per qualsiasi dubbio o chiarimento puoi scrivermi da qui: il pulsante apre la chat WhatsApp con un messaggio già pronto, con il tuo nome. Rispondo io di persona." },
       { target: "stats", title: "I tuoi compensi", text: "«In attesa» è il compenso delle vendite recenti: matura dopo 30 giorni senza rimborso. «Maturato» è quello che ti dobbiamo pagare. «Già pagato» è quello che hai ricevuto." },
       { target: "links", title: "I tuoi link personali", text: "✅ Questi sono gli UNICI link con cui guadagni: uno per ogni sito. Copiali con un clic e usali nei tuoi video, post e messaggi. Chi li apre viene riconosciuto come una tua segnalazione.\n✅ Vanno bene anche i link dentro ai post che creiamo noi: sono già incorporati.\n⚠️ Non usare nessun altro link, nemmeno l'indirizzo diretto del sito: senza il tuo link non possiamo tracciare la vendita e non guadagni." },
@@ -180,6 +181,7 @@ export const PANEL: Record<Lang, PanelText> = {
     tourUi: { next: "Next", back: "Back", skip: "Skip", close: "Close", of: "{a} of {b}" },
     steps: [
       { target: "", title: "Welcome to your dashboard", text: "In two minutes I'll show you where to see your earnings and where to find the links to share. You can replay this tour any time from the button at the top." },
+      { target: "profile", title: "Your profile and payment details", text: "Above you find the «Profile» button. Fill it in with first name, last name, IBAN, bank, mobile phone and address: they are used only to pay your fees.\n🔒 These are sensitive details: only the programme administrator can see them, and your page is protected by the password we gave you. Do not share it.\n✅ The IBAN must be in your name. Without a complete profile we cannot make payments." },
       { target: "wa", title: "Message me on WhatsApp", text: "For any question or clarification you can write to me from here: the button opens a WhatsApp chat with a ready message that includes your name. I reply personally." },
       { target: "stats", title: "Your earnings", text: "\"Pending\" is the fee on recent sales: it vests after 30 days without a refund. \"Vested\" is what we owe you. \"Already paid\" is what you have received." },
       { target: "links", title: "Your personal links", text: "✅ These are the ONLY links you earn with: one for each website. Copy them with one click and use them in your videos, posts and messages. Anyone who opens them is recognised as your referral.\n✅ The links inside the posts we create are fine too: they are already built in.\n⚠️ Do not use any other link, not even the direct address of the site: without your link we cannot track the sale and you earn nothing." },
@@ -226,5 +228,67 @@ export const LANDING = {
     flowLabel: "What happens next",
     flow: ["You leave your email", "You reach the site"],
     note: "There is nothing to pay at this step.",
+  },
+};
+
+export const LOCK = {
+  it: {
+    title: "Area riservata",
+    intro: "Inserisci la password che ti abbiamo comunicato per aprire il tuo pannello.",
+    label: "Password",
+    go: "Entra",
+    err: "Password non corretta.",
+    locked: "Troppi tentativi. Riprova tra 15 minuti.",
+    nopw: "Il tuo accesso non è ancora attivo: scrivici su WhatsApp e ti comunichiamo la password.",
+    wa: "Scrivici su WhatsApp",
+    waMsg: "Sono un partner e non riesco ad accedere al mio pannello.",
+    home: "Vai alla home del programma partner",
+  },
+  en: {
+    title: "Private area",
+    intro: "Enter the password we gave you to open your dashboard.",
+    label: "Password",
+    go: "Enter",
+    err: "Wrong password.",
+    locked: "Too many attempts. Try again in 15 minutes.",
+    nopw: "Your access is not active yet: message us on WhatsApp and we will send you the password.",
+    wa: "Message us on WhatsApp",
+    waMsg: "I am a partner and cannot access my dashboard.",
+    home: "Go to the partner programme home",
+  },
+};
+
+export const PROFILE = {
+  it: {
+    button: "Profilo",
+    title: "Il tuo profilo",
+    intro: "Questi dati servono solo per pagarti i compensi. Li vede solo l'amministratore del programma e sono dietro la tua password.",
+    back: "← Torna al pannello",
+    first: "Nome", last: "Cognome", iban: "IBAN", bank: "Banca di riferimento", phone: "Cellulare", address: "Indirizzo",
+    ibanHelp: "Il conto deve essere intestato a te.",
+    addressHelp: "Via, numero civico, CAP, città e provincia.",
+    save: "Salva i dati",
+    saved: "Dati salvati.",
+    errors: { missing: "Compila tutti i campi.", iban: "L'IBAN non è valido: controllalo e riprova.", phone: "Il numero di cellulare non è valido.", save: "Salvataggio non riuscito, riprova." } as Record<string, string>,
+    bannerTitle: "Completa il tuo profilo",
+    bannerText: "Inserisci nome, cognome, IBAN, banca, cellulare e indirizzo: senza questi dati non possiamo pagarti i compensi.",
+    bannerGo: "Compila il profilo",
+    updated: "Ultimo aggiornamento",
+  },
+  en: {
+    button: "Profile",
+    title: "Your profile",
+    intro: "This data is used only to pay your fees. Only the programme administrator can see it, and it sits behind your password.",
+    back: "← Back to dashboard",
+    first: "First name", last: "Last name", iban: "IBAN", bank: "Bank", phone: "Mobile phone", address: "Address",
+    ibanHelp: "The account must be in your name.",
+    addressHelp: "Street, number, postcode, city and province.",
+    save: "Save details",
+    saved: "Details saved.",
+    errors: { missing: "Fill in all fields.", iban: "The IBAN is not valid: check it and try again.", phone: "The mobile number is not valid.", save: "Could not save, please try again." } as Record<string, string>,
+    bannerTitle: "Complete your profile",
+    bannerText: "Enter first name, last name, IBAN, bank, mobile phone and address: without them we cannot pay your fees.",
+    bannerGo: "Fill in your profile",
+    updated: "Last updated",
   },
 };

@@ -3,7 +3,10 @@ import { cookies } from "next/headers";
 import { db } from "@/lib/supabase";
 import { SITES, TIPS } from "@/lib/sites";
 import { commissionCents, saleStatus } from "@/lib/commission";
-import { PANEL, dateFmt, money, pickLang } from "@/lib/i18n";
+import { LOCK, PANEL, PROFILE, dateFmt, money, pickLang } from "@/lib/i18n";
+import { isPartnerUnlocked } from "@/lib/partnerAuth";
+import Link from "next/link";
+import Gate from "./Gate";
 import LangSwitch from "../../LangSwitch";
 import CopyButton from "../../CopyButton";
 import Tour from "./Tour";
@@ -19,7 +22,7 @@ export default async function PartnerPage({
   searchParams,
 }: {
   params: { token: string };
-  searchParams: { lang?: string };
+  searchParams: { lang?: string; err?: string };
 }) {
   const lang = pickLang(searchParams.lang, cookies().get("pp-lang")?.value);
   const T = PANEL[lang];
@@ -27,6 +30,11 @@ export default async function PartnerPage({
   const supa = db();
   const { data: partner } = await supa.from("partners").select("*").eq("token", params.token).maybeSingle();
   if (!partner) notFound();
+  if (!isPartnerUnlocked(partner)) return <Gate token={partner.token} lang={lang} hasPw={!!partner.pw_hash} err={searchParams.err} />;
+  const P = PROFILE[lang];
+  const { data: prof } = await supa.from("partner_profiles").select("first_name,last_name,iban,bank,phone,address").eq("partner_id", partner.id).maybeSingle();
+  const profileDone = !!prof && Object.values(prof).every((v) => !!v);
+  const lq = lang === "en" ? "?lang=en" : "";
 
   const [{ data: sales }, { data: leads }, { data: clicks }, { data: payouts }, { data: promo }] = await Promise.all([
     supa.from("sales").select("*").eq("partner_id", partner.id).order("paid_at", { ascending: false }),
@@ -52,10 +60,22 @@ export default async function PartnerPage({
         <h1>{T.hello(partner.name)}</h1>
         <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
           <LangSwitch lang={lang} label={T.langLabel} />
+          <a className="btn ghost small" href="/">{LOCK[lang].home}</a>
+          <Link className="btn ghost small" data-tour="profile" href={`/p/${partner.token}/profilo${lq}`}>{P.button}</Link>
           <a className="btn wa" data-tour="wa" href={`https://wa.me/393282693777?text=${encodeURIComponent(T.waMsg(partner.name))}`} target="_blank" rel="noopener noreferrer">{T.waLabel}</a>
           <Tour steps={T.steps} ui={T.tourUi} label={T.tour} />
         </div>
       </div>
+      {!profileDone && (
+        <aside className="how-hl" role="note" style={{ background: "linear-gradient(135deg, #9a3412, #c2410c)" }}>
+          <span className="how-ic" aria-hidden="true">!</span>
+          <div>
+            <h3>{P.bannerTitle}</h3>
+            <p>{P.bannerText}</p>
+            <p style={{ marginTop: 10 }}><Link className="btn small" href={`/p/${partner.token}/profilo${lq}`}>{P.bannerGo}</Link></p>
+          </div>
+        </aside>
+      )}
       <section className="welcome-hl">
         <b>{T.welcomeSlogan}</b>
         <p>{T.welcomeText}</p>

@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import { checkLogin, createSession, destroySession, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/supabase";
 import { attribute, syncStripe } from "@/lib/sync";
+import { MIN_PW, hashPassword } from "@/lib/partnerAuth";
 import { commissionCents, normalizeEmail, saleStatus } from "@/lib/commission";
 
 export async function login(formData: FormData) {
@@ -36,7 +37,9 @@ export async function createPartner(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim();
   const email = normalizeEmail(String(formData.get("email") ?? ""));
   const pct = Number(String(formData.get("pct") ?? "10").replace(",", "."));
+  const pw = String(formData.get("password") ?? "");
   if (!name) redirect("/admin/partners?err=nome");
+  if (pw.length < MIN_PW) redirect("/admin/partners?err=" + encodeURIComponent(`La password deve avere almeno ${MIN_PW} caratteri`));
   const base = slug(name) || "partner";
   const supa = db();
   let code = base;
@@ -50,11 +53,27 @@ export async function createPartner(formData: FormData) {
     email,
     code,
     token: randomBytes(18).toString("hex"),
+    pw_hash: hashPassword(pw),
+    pw_set_at: new Date().toISOString(),
     commission_pct: Number.isFinite(pct) && pct >= 0 && pct <= 100 ? pct : 10,
   });
   if (error) redirect(`/admin/partners?err=${encodeURIComponent(error.message)}`);
   revalidatePath("/admin/partners");
   redirect("/admin/partners?ok=1");
+}
+
+/** Imposta o cambia la password di un partner (tutte le volte che vuoi). Le sessioni già aperte decadono. */
+export async function setPartnerPassword(formData: FormData) {
+  requireAdmin();
+  const id = String(formData.get("id") ?? "");
+  const pw = String(formData.get("password") ?? "");
+  if (pw.length < MIN_PW) redirect("/admin/partners?err=" + encodeURIComponent(`La password deve avere almeno ${MIN_PW} caratteri`));
+  const { error } = await db().from("partners").update({
+    pw_hash: hashPassword(pw), pw_set_at: new Date().toISOString(), pw_fails: 0, pw_locked_until: null,
+  }).eq("id", id);
+  if (error) redirect("/admin/partners?err=" + encodeURIComponent(error.message));
+  revalidatePath("/admin/partners");
+  redirect("/admin/partners?pwok=1");
 }
 
 export async function togglePartner(formData: FormData) {

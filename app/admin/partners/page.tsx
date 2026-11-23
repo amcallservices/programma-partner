@@ -4,7 +4,8 @@ import { SITES } from "@/lib/sites";
 import Nav from "../Nav";
 import CopyButton from "../../CopyButton";
 import ConfirmDelete from "../ConfirmDelete";
-import { createPartner, deletePartner, togglePartner } from "../actions";
+import PasswordField from "../PasswordField";
+import { createPartner, deletePartner, setPartnerPassword, togglePartner } from "../actions";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,7 @@ function baseUrl(): string {
 export default async function Partners({
   searchParams,
 }: {
-  searchParams: { err?: string; ok?: string; deleted?: string };
+  searchParams: { err?: string; ok?: string; deleted?: string; pwok?: string };
 }) {
   requireAdmin();
   const { data: partners } = await db().from("partners").select("*").order("created_at", { ascending: false });
@@ -28,12 +29,14 @@ export default async function Partners({
         <h1>Partner e link</h1>
         <p className="lead">Crea un partner, invia al partner il suo pannello privato e i link da usare nei suoi contenuti.</p>
         {searchParams.ok && <p className="notice">Partner creato.</p>}
+        {searchParams.pwok && <p className="notice">Password aggiornata. Comunicala al partner: la pagina si apre solo con quella.</p>}
         {searchParams.deleted && <p className="notice">Partner «{searchParams.deleted}» eliminato.</p>}
         {searchParams.err && <p className="notice bad">{searchParams.err}</p>}
 
         <form action={createPartner} className="card row">
           <div><label htmlFor="name">Nome partner</label><input id="name" name="name" required /></div>
           <div><label htmlFor="email">Email (facoltativa)</label><input id="email" name="email" type="email" /></div>
+          <PasswordField id="newpw" label="Password del partner" />
           <div><label htmlFor="pct">Compenso %</label><input id="pct" name="pct" defaultValue="10" inputMode="decimal" /></div>
           <div className="auto"><button type="submit">Crea partner</button></div>
         </form>
@@ -57,6 +60,13 @@ export default async function Partners({
                   <ConfirmDelete id={p.id} name={p.name} action={deletePartner} />
                 </div>
               </div>
+
+              <form action={setPartnerPassword} className="row" style={{ margin: "14px 0 0", alignItems: "flex-end" }}>
+                <input type="hidden" name="id" value={p.id} />
+                <PasswordField id={`pw-${p.id}`} label={p.pw_hash ? "Nuova password" : "Imposta la password (ora la pagina è chiusa)"} />
+                <div className="auto"><button type="submit" className="small">{p.pw_hash ? "Cambia password" : "Imposta password"}</button></div>
+                <span className={`pill ${p.pw_hash ? "pagata" : "attesa"} auto`}>{p.pw_hash ? "protetto da password" : "senza password: accesso chiuso"}</span>
+              </form>
 
               <p className="muted" style={{ margin: "14px 0 4px" }}>Pannello privato del partner, da inviargli:</p>
               <div className="linkrow">
