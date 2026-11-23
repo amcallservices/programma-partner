@@ -6,8 +6,8 @@ import { db } from "@/lib/supabase";
 import { cookies } from "next/headers";
 import { cookieName, isPartnerUnlocked, normalizeIban, openPartnerSession, verifyPassword } from "@/lib/partnerAuth";
 
-const MAX_FAILS = 5;
-const LOCK_MIN = 15;
+const MAX_FAILS = 20;
+const LOCK_MIN = 5;
 
 function back(token: string, next: string, lang: string, q = ""): string {
   const path = next === "profilo" ? `/p/${token}/profilo` : `/p/${token}`;
