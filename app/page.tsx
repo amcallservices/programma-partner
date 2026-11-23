@@ -4,8 +4,6 @@ import Simulator from "./Simulator";
 import Glow from "./Glow";
 import HowSlides from "./HowSlides";
 
-const MAIL = "amcall.services@gmail.com";
-
 export default function Home() {
   return (
     <div className="wrap">
@@ -47,7 +45,7 @@ export default function Home() {
       <details className="faq"><summary>Posso vedere cosa ho guadagnato?</summary><p>Sì. Nel tuo pannello vedi click, email raccolte, vendite e compensi in tempo reale, con gli stati in attesa, maturato e pagato.</p></details>
 
       <p className="foot">
-        Programma partner dell&apos;ecosistema Self Publishing · <a href={`mailto:${MAIL}`}>{MAIL}</a> · <Link href="/privacy">Privacy</Link>
+        Programma partner dell&apos;ecosistema Self Publishing · <Link href="/privacy">Privacy</Link>
       </p>
     </div>
   );
