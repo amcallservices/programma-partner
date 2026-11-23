@@ -1,4 +1,4 @@
-import Shelf from "./Shelf";
+import SiteSlider from "./SiteSlider";
 import Simulator from "./Simulator";
 import Glow from "./Glow";
 import HowSlides from "./HowSlides";
@@ -19,7 +19,7 @@ export default function Home() {
             <a className="btn ghost" href="#calcolo">Calcola quanto puoi guadagnare</a>
           </p>
         </div>
-        <Shelf />
+        <SiteSlider />
       </header>
 
       <h2 id="come">Come funziona</h2>

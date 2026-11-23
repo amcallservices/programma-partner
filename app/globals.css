@@ -373,3 +373,23 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
   .hs *, .hs-stage * { animation-duration: 0.01ms !important; animation-delay: 0s !important; }
   .hs-lock { display: none; } .hs-compose { display: none; }
 }
+
+/* Slide scorrevoli dei siti (home) */
+.ss { min-width: 0; }
+.ss-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.ss-track::-webkit-scrollbar { display: none; }
+.ss-slide { flex: 0 0 100%; scroll-snap-align: start; min-width: 0; }
+.ss-win { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 44px rgba(0, 0, 0, .4); }
+.ss-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #eef0fa; }
+.ss-bar i { width: 9px; height: 9px; border-radius: 50%; background: #c9cde8; }
+.ss-bar span { margin-left: 8px; font-size: 11px; color: #5b5f7a; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ss-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.ss-name { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-family: var(--serif); font-size: 26px; }
+.ss-view iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: top left; pointer-events: none; background: #fff; }
+.ss-ctl { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 14px 0 0; }
+.hero-home .ss-ctl button.ghost { color: #fff; border-color: rgba(255, 255, 255, .4); }
+.ss-dots { display: flex; gap: 8px; }
+.ss-dots button { all: unset; cursor: pointer; width: 11px; height: 11px; border-radius: 50%; background: rgba(255, 255, 255, .3); transition: transform .2s, background .2s; }
+.ss-dots button.on { background: var(--c); transform: scale(1.35); }
+.ss-dots button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.ss .shelfinfo { margin-top: 14px; min-height: 140px; }
