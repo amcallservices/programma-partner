@@ -45,17 +45,9 @@ export default async function Landing({
   const color = COVER[site.key] ?? site.color;
   return (
     <div className="stage">
-      <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: color }}>
-        <iframe
-          src={site.key === "soft" ? `${site.url}?embed=true` : site.url}
-          title=""
-          tabIndex={-1}
-          loading="eager"
-          referrerPolicy="no-referrer"
-          {...({ inert: "" } as object)}
-        />
-      </div>
-      <form action={submitLead} className="pop" style={{ ["--c" as string]: color }}>
+      {/* Sfondo solo colorato: il sito di destinazione non si vede né si carica finché non viene lasciata l'email. */}
+      <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: color }} />
+      <form action={submitLead} className="pop" role="dialog" aria-modal="true" aria-labelledby="pop-title" style={{ ["--c" as string]: color }}>
         <input type="hidden" name="code" value={params.code} />
         <input type="hidden" name="site" value={site.key} />
         <input type="hidden" name="lang" value={lang} />
@@ -63,7 +55,7 @@ export default async function Landing({
           <span className="pop-site" style={{ color }}>{site.name}</span>
           <LangSwitch lang={lang} label={L.langLabel} />
         </div>
-        <h1>{L.continueTo(site.name)}</h1>
+        <h1 id="pop-title">{L.continueTo(site.name)}</h1>
         <p className="pop-why">{L.why}</p>
         <label htmlFor="email" className="sr">{L.email}</label>
         <input id="email" name="email" type="email" required autoFocus autoComplete="email" placeholder={L.email} />
