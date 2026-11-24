@@ -38,7 +38,7 @@ export async function submitLead(formData: FormData) {
       .gte("created_at", dayAgo)
       .limit(1);
     if (!dup || dup.length === 0) {
-      await supa.from("leads").insert({
+      const { error } = await supa.from("leads").insert({
         partner_id: partner.id,
         site_key: siteKey,
         email,
@@ -46,6 +46,10 @@ export async function submitLead(formData: FormData) {
         consent: true,
         consent_at: new Date().toISOString(),
       });
+      if (error) {
+        console.error("[programma-partner] email non registrata:", error.message, error.code);
+        redirect(`/go/${encodeURIComponent(code)}/${siteKey}?err=salvataggio&lang=${lang}`);
+      }
     }
   }
   redirect(site.url);

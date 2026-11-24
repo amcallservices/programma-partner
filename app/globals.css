@@ -148,7 +148,7 @@ details.faq p { margin: 10px 0 0; color: var(--muted); max-width: 64ch; }
 .stage { position: relative; z-index: 1; min-height: 100vh; padding: 24px 16px; display: flex; align-items: center; justify-content: center; }
 .backdrop { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: linear-gradient(135deg, var(--c), var(--ink)); }
 .backdrop iframe { width: 100%; height: 100%; border: 0; pointer-events: none; user-select: none; }
-.backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(22, 19, 77, 0.22); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+.backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(22, 19, 77, 0.58); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
 .entry { --glow: #7c7cff; position: relative; overflow: hidden; display: grid; gap: 26px 30px; grid-template-columns: 0.95fr 1.05fr; align-items: start; padding: 28px 40px 34px; border-radius: 22px; background-color: rgba(22, 19, 77, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px); background-size: 22px 22px; color: #fff; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
 .entry::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(460px circle at var(--mx, 25%) var(--my, 30%), color-mix(in srgb, var(--glow) 40%, transparent), transparent 65%); opacity: 0.6; transition: opacity 0.35s ease; }
 .entry:hover::before { opacity: 1; }
@@ -456,3 +456,10 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
   .hero-home { border-radius: 16px; padding: 24px 14px 18px; }
 }
 @media (max-width: 420px) { .ss-ex { gap: 8px; } .ss-ex li { padding: 8px 9px; } .ss-ex .p { font-size: 16px; } .ss-ex .g { font-size: 12.5px; } }
+
+.pop { max-width: 460px; padding: 28px 28px 28px; border-top: 5px solid var(--c); }
+.pop h1 { font-size: 27px; line-height: 1.15; }
+.pop .pop-why { margin: 6px 0 14px; font-size: 16px; color: var(--ink); font-weight: 600; }
+.pop input[type="email"] { padding: 15px 16px; font-size: 17px; border-width: 2px; }
+.pop .go { padding: 16px 18px; font-size: 17px; }
+@media (max-width: 480px) { .pop { padding: 22px 18px 22px; } .pop h1 { font-size: 23px; } }
