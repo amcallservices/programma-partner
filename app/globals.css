@@ -464,6 +464,6 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 .pop .go { padding: 16px 18px; font-size: 17px; }
 @media (max-width: 480px) { .pop { padding: 22px 18px 22px; } .pop h1 { font-size: 23px; } }
 
-/* Il pop-up è fisso: non ha chiusura e il sito di destinazione si apre solo dopo l'invio dell'email. */
-.backdrop { background: radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--c) 70%, #fff 8%), var(--ink) 75%); }
-.backdrop::after { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+/* Il pop-up è fisso: non ha chiusura e il sito dietro si vede ma non si può usare; il passaggio al sito avviene solo dopo l'invio dell'email. */
+.backdrop::after { background: rgba(22, 19, 77, 0.34); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.backdrop, .backdrop iframe { pointer-events: none; user-select: none; }

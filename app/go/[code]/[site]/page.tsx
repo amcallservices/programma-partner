@@ -45,8 +45,17 @@ export default async function Landing({
   const color = COVER[site.key] ?? site.color;
   return (
     <div className="stage">
-      {/* Sfondo solo colorato: il sito di destinazione non si vede né si carica finché non viene lasciata l'email. */}
-      <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: color }} />
+      {/* Il sito di destinazione si vede dietro, ma è inerte (non cliccabile né selezionabile): resta visibile solo il pop-up, che non si chiude. */}
+      <div className="backdrop" aria-hidden="true" style={{ ["--c" as string]: color }}>
+        <iframe
+          src={site.key === "soft" ? `${site.url}?embed=true` : site.url}
+          title=""
+          tabIndex={-1}
+          loading="eager"
+          referrerPolicy="no-referrer"
+          {...({ inert: "" } as object)}
+        />
+      </div>
       <form action={submitLead} className="pop" role="dialog" aria-modal="true" aria-labelledby="pop-title" style={{ ["--c" as string]: color }}>
         <input type="hidden" name="code" value={params.code} />
         <input type="hidden" name="site" value={site.key} />
