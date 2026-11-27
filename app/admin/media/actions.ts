@@ -43,7 +43,10 @@ export async function createItem(input: {
     mime: input.file?.mime ?? null,
     size_bytes: input.file?.size ?? null,
   });
-  if (error) return { error: "Salvataggio non riuscito." };
+  if (error) {
+    console.error("[programma-partner] media non salvato:", error.message, error.code);
+    return { error: `Salvataggio non riuscito (${error.code ?? "errore"}).` };
+  }
   revalidatePath("/admin/media");
   return { ok: true };
 }
