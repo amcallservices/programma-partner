@@ -39,8 +39,8 @@ const HERO: Record<string, { h: string; lead: string }> = {
 };
 const VANTAGGI = ["Nessun investimento e nessun acquisto obbligatorio", "Orari liberi: pubblichi quando vuoi", "Immagini, video e testi già pronti", "Pannello personale con link e guadagni in tempo reale", "Pagamento mensile con bonifico, da 20 €"];
 
-export default function Home({ searchParams }: { searchParams?: { v?: string } }) {
-  const hv = HERO[(searchParams?.v ?? "a").toLowerCase()] ?? HERO.a;
+export default function Home() {
+  const hv = HERO.a;
   return (
     <div className="wrap">
       <Glow />
@@ -58,6 +58,10 @@ export default function Home({ searchParams }: { searchParams?: { v?: string } }
             <a className="btn ghost" href="/demo">Guarda una pagina partner di prova</a>
             <a className="btn ghost" href="#calcolo">Calcola quanto puoi guadagnare</a>
           </p>
+        </div>
+        <div className="ss-intro">
+          <h2>I 6 siti che puoi promuovere con il tuo link</h2>
+          <p>Scegli quelli più adatti al tuo pubblico: per ognuno vedi a chi serve, cosa offre e quanto puoi guadagnare.</p>
         </div>
         <SiteSlider />
       </header>
