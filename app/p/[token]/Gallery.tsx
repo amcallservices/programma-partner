@@ -7,14 +7,66 @@ export type GItem = {
   id: string; title: string; kind: string; fileUrl: string | null; dl: string | null;
   fileName: string | null; size: string; text: string | null; link: string;
 };
-type Labels = { download: string; copyText: string; copyLink: string; copied: string; textOnly: string; close: string; description: string };
+type Labels = {
+  download: string; copyText: string; copyLink: string; copied: string; textOnly: string; close: string; description: string;
+  share: string; sharing: string; shareCopied: string; shareDesktop: string; shareOn: string;
+};
 
 export default function Gallery({ items, labels }: { items: GItem[]; labels: Labels }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [cur, setCur] = useState<GItem | null>(null);
+  const [msg, setMsg] = useState<string>("");
+  const [busy, setBusy] = useState(false);
 
-  function open(i: GItem) { setCur(i); requestAnimationFrame(() => ref.current?.showModal()); }
+  function open(i: GItem) { setMsg(""); setCur(i); requestAnimationFrame(() => ref.current?.showModal()); }
   function onClose() { ref.current?.querySelectorAll("video").forEach((v) => v.pause()); setCur(null); }
+
+  async function copyTxt(t: string) {
+    try { await navigator.clipboard.writeText(t); }
+    catch {
+      const el = document.createElement("textarea");
+      el.value = t; document.body.appendChild(el); el.select(); document.execCommand("copy"); el.remove();
+    }
+  }
+
+  /** Condivisione assistita: sul telefono apre il menu di condivisione con file e testo; sul computer scarica il file e copia il testo. */
+  async function share(i: GItem) {
+    const text = i.text ?? `${i.title} ${i.link}`;
+    const nav = navigator as Navigator & { canShare?: (d: object) => boolean; share?: (d: object) => Promise<void> };
+    setBusy(true); setMsg(labels.sharing);
+    try {
+      await copyTxt(text); // alcune app ignorano il testo quando si condivide un file: così basta incollarlo
+      if (nav.share && i.fileUrl) {
+        const res = await fetch(i.fileUrl);
+        const blob = await res.blob();
+        const file = new File([blob], i.fileName ?? "media", { type: blob.type || undefined });
+        if (nav.canShare?.({ files: [file] })) {
+          await nav.share({ files: [file], text, title: i.title });
+          setMsg(labels.shareCopied);
+          return;
+        }
+      }
+      if (nav.share && !i.fileUrl) {
+        await nav.share({ text, title: i.title });
+        setMsg("");
+        return;
+      }
+      if (i.dl) {
+        const a = document.createElement("a");
+        a.href = i.dl; a.download = i.fileName ?? ""; document.body.appendChild(a); a.click(); a.remove();
+        setMsg(labels.shareDesktop);
+      } else {
+        setMsg(labels.copied);
+      }
+    } catch (e) {
+      // l'utente ha chiuso il menu di condivisione: nessun errore da mostrare
+      if ((e as Error)?.name === "AbortError") setMsg(labels.shareCopied);
+      else if (i.dl) { setMsg(labels.shareDesktop); }
+      else setMsg(labels.copied);
+    } finally { setBusy(false); }
+  }
+
+  const enc = encodeURIComponent;
 
   return (
     <>
@@ -43,6 +95,15 @@ export default function Gallery({ items, labels }: { items: GItem[]; labels: Lab
             <div className="mactions" style={{ padding: "12px 0 0" }}>
               {cur.dl && <a className="btn small" href={cur.dl} download={cur.fileName ?? undefined}>{labels.download}</a>}
               <CopyButton text={cur.text ?? cur.link} label={cur.text ? labels.copyText : labels.copyLink} doneLabel={labels.copied} />
+              <button type="button" className="btn small share-btn" disabled={busy} onClick={() => share(cur)}>{labels.share}</button>
+            </div>
+            <p className="lb-msg" role="status" aria-live="polite">{msg}</p>
+            <div className="sc-ch lb-ch" aria-label={labels.shareOn}>
+              <span>{labels.shareOn}</span>
+              <a href={`https://wa.me/?text=${enc(cur.text ?? `${cur.title} ${cur.link}`)}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${enc(cur.link)}`} target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href={`https://t.me/share/url?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer">Telegram</a>
+              <a href={`https://twitter.com/intent/tweet?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer">X</a>
             </div>
           </div>
         )}

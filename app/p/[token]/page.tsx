@@ -139,7 +139,7 @@ export default async function PartnerPage({
             <section className="msite" id={`media-${s.key}`} key={s.key} style={{ ["--c" as string]: s.color }}>
               <header className="msite-head"><h3>{s.name}</h3><span>{list.length}</span></header>
               {list.length === 0 ? <p className="muted msite-empty">{T.mediaEmpty}</p> : (
-                <Gallery items={gitems} labels={{ download: T.mediaDownload, copyText: T.mediaCopyText, copyLink: T.mediaCopyLink, copied: T.copied, textOnly: T.mediaTextOnly, close: T.mediaClose, description: T.mediaRead }} />
+                <Gallery items={gitems} labels={{ download: T.mediaDownload, copyText: T.mediaCopyText, copyLink: T.mediaCopyLink, copied: T.copied, textOnly: T.mediaTextOnly, close: T.mediaClose, description: T.mediaRead, share: T.mediaShare, sharing: T.mediaSharing, shareCopied: T.mediaShareCopied, shareDesktop: T.mediaShareDesktop, shareOn: T.mediaShareOn }} />
               )}
             </section>
           );

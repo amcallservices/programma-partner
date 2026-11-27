@@ -512,3 +512,9 @@ dialog.lightbox::backdrop { background: rgba(10, 9, 40, .72); }
 @media (max-width: 600px) { .promo-hl { padding: 20px 16px; } .demo-bar .btn { margin-left: 0; } }
 .helpbar .brand { color: var(--ink); margin: 0; }
 .helpbar .brand b { color: #2563eb; }
+
+.share-btn { background: #16a34a; border-color: #16a34a; color: #fff; font-weight: 700; }
+.share-btn:disabled { opacity: .6; }
+.lb-msg { margin: 10px 0 0; min-height: 1.2em; font-size: 14px; color: #166534; font-weight: 600; }
+.lb-ch { margin-top: 10px; align-items: center; }
+.lb-ch span { font-size: 13px; color: #5b5f86; margin-right: 4px; }
