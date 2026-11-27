@@ -32,7 +32,15 @@ const JSON_LD = {
   ],
 };
 
-export default function Home() {
+const HERO: Record<string, { h: string; lead: string }> = {
+  a: { h: "Condividi un link. Guadagni il 15% su ogni vendita.", lead: "Ricevi un link personale per ciascuno dei nostri 6 siti. Chi lo apre e poi acquista è una tua vendita, e il compenso è tuo." },
+  b: { h: "Fai conoscere i nostri siti. Noi ti paghiamo ogni vendita.", lead: "Scrittura, self publishing e marketing con l'AI: 6 siti italiani da promuovere con il tuo link personale, sui social, nei forum e nei gruppi." },
+  c: { h: "Diventa partner: il 15% di ogni vendita è tuo.", lead: "Promuovi i nostri 6 siti con il tuo link personale. Più lo pubblichi dove ci sono persone interessate, più vendite si collegano a te." },
+};
+const VANTAGGI = ["Nessun investimento e nessun acquisto obbligatorio", "Orari liberi: pubblichi quando vuoi", "Immagini, video e testi già pronti", "Pannello personale con link e guadagni in tempo reale", "Pagamento mensile con bonifico, da 20 €"];
+
+export default function Home({ searchParams }: { searchParams?: { v?: string } }) {
+  const hv = HERO[(searchParams?.v ?? "a").toLowerCase()] ?? HERO.a;
   return (
     <div className="wrap">
       <Glow />
@@ -40,11 +48,11 @@ export default function Home() {
       <header className="hero-home" data-glow>
         <div>
           <Brand />
-          <h1>Porta nuovi utenti ai nostri siti e guadagna.</h1>
-          <p className="lead" style={{ marginTop: 18 }}>
-            Ricevi un link personale per ciascun sito. Quando una persona arriva dal tuo link e acquista, il compenso è tuo. Non
-            serve modificare nessun sito e non ci sono codici sconto da gestire.
-          </p>
+          <h1>{hv.h}</h1>
+          <p className="lead" style={{ marginTop: 18 }}>{hv.lead}</p>
+          <ul className="hero-ticks">
+            {VANTAGGI.map((t) => (<li key={t}>{t}</li>))}
+          </ul>
           <p style={{ marginTop: 22, display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a className="btn cta" href={`https://wa.me/393282693777?text=${encodeURIComponent("Ti scrivo dal sito partner, voglio collaborare.")}`} target="_blank" rel="noopener noreferrer">Scrivici per iniziare</a>
             <a className="btn ghost" href="/demo">Guarda una pagina partner di prova</a>
