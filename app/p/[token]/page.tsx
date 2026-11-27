@@ -3,13 +3,14 @@ import { cookies } from "next/headers";
 import { db } from "@/lib/supabase";
 import { SITES, TIPS } from "@/lib/sites";
 import { commissionCents, saleStatus } from "@/lib/commission";
-import { LOCK, PANEL, PROFILE, dateFmt, money, pickLang } from "@/lib/i18n";
+import { LOCK, PANEL, PROFILE, SIMPLE, dateFmt, money, pickLang } from "@/lib/i18n";
 import { isPartnerUnlocked } from "@/lib/partnerAuth";
 import Link from "next/link";
 import Gate from "./Gate";
 import { partnerLogout } from "./actions";
 import LangSwitch from "../../LangSwitch";
-import CopyButton from "../../CopyButton";
+import ShareCards from "../../ShareCards";
+import ThreeSteps from "../../ThreeSteps";
 import Tour from "./Tour";
 import NoCopyLink from "./NoCopyLink";
 import Gallery, { type GItem } from "./Gallery";
@@ -27,6 +28,7 @@ export default async function PartnerPage({
 }) {
   const lang = pickLang(searchParams.lang, cookies().get("pp-lang")?.value);
   const T = PANEL[lang];
+  const S = SIMPLE[lang];
   const eur = (c: number, cur = "eur") => money(c, cur, lang);
   const supa = db();
   const { data: partner } = await supa.from("partners").select("*").eq("token", params.token).maybeSingle();
@@ -86,7 +88,12 @@ export default async function PartnerPage({
         <b>{T.welcomeSlogan}</b>
         <p>{T.welcomeText}</p>
       </section>
-      <p className="lead" style={{ marginTop: 10 }}>{T.intro(Number(partner.commission_pct))}</p>
+      <ThreeSteps title={S.stepsTitle} steps={S.steps} />
+      <ShareCards
+        items={perSite.map((x) => ({ key: x.key, name: x.name, color: x.color, url: `${base}/go/${partner.code}/${x.key}`, note: T.clicksEmails(x.clicks, x.leads) }))}
+        labels={{ title: S.linksTitle, sub: S.linksSub, warn: S.warn, copy: S.copy, copied: S.copied, share: S.share, shareOn: S.shareOn, msg: S.msg }}
+      />
+      <p className="muted" style={{ margin: "14px 0 0" }}>{T.linksNote}</p>
 
       <div className="grid" data-tour="stats" style={{ marginTop: 18 }}>
         <div className="card stat" style={{ ["--stat" as string]: "var(--lib)", margin: 0 }}><span>{T.stats.pending}</span><b>{eur(tot("in attesa"))}</b><small>{T.stats.pendingNote}</small></div>
@@ -95,23 +102,6 @@ export default async function PartnerPage({
         <div className="card stat" style={{ ["--stat" as string]: "var(--boost)", margin: 0 }}><span>{T.stats.sales}</span><b>{mine.filter((s) => saleStatus(s) !== "annullata").length}</b></div>
       </div>
 
-      <div className="links-head">
-        <h2>{T.links}</h2>
-        <p className="links-note" role="note">{T.linksNote}</p>
-      </div>
-      <div className="card" data-tour="links" style={{ paddingTop: 8, paddingBottom: 8 }}>
-        {perSite.map((s) => {
-          const url = `${base}/go/${partner.code}/${s.key}`;
-          return (
-            <div className="linkrow" key={s.key} style={{ ["--c" as string]: s.color }}>
-              <span className="dot" />
-              <span className="nm">{s.name}<div className="muted" style={{ fontWeight: 400 }}>{T.clicksEmails(s.clicks, s.leads)}</div></span>
-              <code>{url}</code>
-              <CopyButton text={url} label={T.copy} doneLabel={T.copied} />
-            </div>
-          );
-        })}
-      </div>
 
       <aside className="how-hl" data-tour="how" role="note">
         <span className="how-ic" aria-hidden="true">i</span>
@@ -121,8 +111,10 @@ export default async function PartnerPage({
         </div>
       </aside>
 
-      <h2>{T.mediaTitle}</h2>
-      <p className="muted" style={{ margin: "0 0 12px" }}>{T.mediaIntro}</p>
+      <h2 className="sections-title">{S.sectionsTitle}</h2>
+      <details className="psec" id="media">
+        <summary>{T.mediaTitle}</summary>
+            <p className="muted" style={{ margin: "0 0 12px" }}>{T.mediaIntro}</p>
       <div data-tour="media">
         <nav className="media-jump" aria-label={T.mediaTitle}>
           {SITES.map((s) => {
@@ -154,8 +146,11 @@ export default async function PartnerPage({
         })}
       </div>
 
-      <h2>{T.tipsTitle}</h2>
-      <p className="muted" style={{ margin: "0 0 12px" }}>{T.tipsIntro}</p>
+      </details>
+
+      <details className="psec" id="tips">
+        <summary>{T.tipsTitle}</summary>
+            <p className="muted" style={{ margin: "0 0 12px" }}>{T.tipsIntro}</p>
       <div className="tips" data-tour="tips">
         {SITES.map((s) => {
           const t = TIPS[lang][s.key];
@@ -173,7 +168,10 @@ export default async function PartnerPage({
         })}
       </div>
 
-      <h2>{T.contactsTitle} ({(leads ?? []).length})</h2>
+      </details>
+
+      <details className="psec" id="contacts">
+        <summary>{T.contactsTitle} ({(leads ?? []).length})</summary>
       <p className="muted" style={{ margin: "0 0 10px" }}>{T.contactsIntro}</p>
       <div className="scroll" data-tour="contacts">
         <table>
@@ -192,8 +190,11 @@ export default async function PartnerPage({
         </table>
       </div>
 
-      <h2>{T.salesTitle}</h2>
-      <div className="scroll" data-tour="sales">
+      </details>
+
+      <details className="psec" id="sales">
+        <summary>{T.salesTitle}</summary>
+            <div className="scroll" data-tour="sales">
         <table>
           <thead><tr>{T.salesCols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
           <tbody>
@@ -214,8 +215,11 @@ export default async function PartnerPage({
         </table>
       </div>
 
-      <h2>{T.payoutsTitle}</h2>
-      <div className="scroll" data-tour="payouts">
+      </details>
+
+      <details className="psec" id="payouts">
+        <summary>{T.payoutsTitle}</summary>
+            <div className="scroll" data-tour="payouts">
         <table>
           <thead><tr>{T.payoutsCols.map((c) => <th key={c}>{c}</th>)}</tr></thead>
           <tbody>
@@ -230,6 +234,7 @@ export default async function PartnerPage({
           </tbody>
         </table>
       </div>
+      </details>
     </div>
   );
 }

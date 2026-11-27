@@ -54,6 +54,15 @@ export const SITES: Site[] = [
     pitch: "Crea immagini, caroselli e video e pubblicali sui social, senza abbonamento: paghi solo a crediti.",
     bullets: ["Facebook, Instagram, YouTube e TikTok", "Approvazione manuale o pilota automatico", "Crediti di prova gratuiti"],
   },
+  {
+    key: "cds",
+    name: "Compagnia di Scrittura",
+    url: "https://compagniadiscrittura.site",
+    color: "#1f2937",
+    headline: "Hai un libro dentro di te: lo scriviamo noi",
+    pitch: "Un servizio di ghostwriting: racconti l'idea o la storia e ricevi il tuo ebook di 150 pagine, con copertina e revisione se li scegli.",
+    bullets: ["Ebook di 150 pagine scritto per te", "Copertina e revisione facoltative", "Da 19,99 €, senza scrivere una riga"],
+  },
 ];
 
 export function getSite(key: string): Site | undefined {
@@ -85,6 +94,11 @@ export const SITE_EN: Record<string, { headline: string; pitch: string; bullets:
     headline: "Automatic marketing with 10 AI agents",
     pitch: "Create images, carousels and videos and publish them on social media, with no subscription: you only pay with credits.",
     bullets: ["Facebook, Instagram, YouTube and TikTok", "Manual approval or autopilot", "Free trial credits"],
+  },
+  cds: {
+    headline: "You have a book inside you: we write it for you",
+    pitch: "A ghostwriting service: you tell us the idea or the story and you get your 150-page ebook, with cover and revision if you choose them.",
+    bullets: ["150-page ebook written for you", "Cover and revision optional", "From €19.99, without writing a line"],
   },
 };
 
@@ -242,3 +256,34 @@ export const ESEMPI: Record<string, { nome: string; dettaglio?: string; prezzo: 
     { nome: "Agenzia", dettaglio: "1.550 crediti", prezzo: 99 },
   ],
 };
+
+/* Compagnia di Scrittura (sesto sito). Prezzi dei tre pacchetti letti sul sito il 27/11/2026. */
+TIPS.it.cds = {
+  who: "Chi ha un'idea, una storia o un'esperienza da trasformare in libro ma non ha tempo o voglia di scriverlo.",
+  ideas: [
+    "Parla a chi dice «un libro lo scriverei, ma non so da dove cominciare»: qui non deve scrivere nulla, basta raccontare l'idea.",
+    "Mostra la scala dei pacchetti: Solo Ebook, con copertina, oppure Libro Completo con revisione. Chi ha poco budget parte dal primo.",
+    "Pensa a professionisti, coach, consulenti e artigiani che vogliono un libro per farsi conoscere: è un biglietto da visita che dura nel tempo.",
+    "Condividi nei gruppi e nei forum di scrittura, di crescita personale e di imprenditoria, con una frase semplice e il tuo link.",
+  ],
+};
+TIPS.en.cds = {
+  who: "People with an idea, a story or an experience to turn into a book who do not have the time or the wish to write it.",
+  ideas: [
+    "Talk to people who say «I would write a book, but I don't know where to start»: here they write nothing, they just tell the idea.",
+    "Show the ladder of packages: ebook only, with cover, or the Complete Book with revision. Those on a small budget can start from the first.",
+    "Think of professionals, coaches, consultants and craftspeople who want a book to get known: it is a business card that lasts.",
+    "Share it in writing, personal growth and entrepreneurship groups and forums, with one simple sentence and your link.",
+  ],
+};
+DETAIL.cds = {
+  serve: "È un servizio di ghostwriting di ebook: la persona racconta l'idea e il libro lo scrive la Compagnia di Scrittura.",
+  fare: ["Ricevere un ebook di 150 pagine", "Aggiungere la copertina", "Aggiungere anche la revisione", "Inviare le istruzioni dettagliate su WhatsApp dopo l'acquisto"],
+  per: "Chi ha un'idea o una storia da trasformare in libro ma non vuole o non può scriverla da sé.",
+  utente: "L'utente ottiene il suo libro senza scriverlo: lo può pubblicare, usarlo per farsi conoscere o regalarlo, da 19,99 €.",
+};
+ESEMPI.cds = [
+  { nome: "Solo Ebook", dettaglio: "150 pagine", prezzo: 19.99 },
+  { nome: "Ebook + Copertina", dettaglio: "150 pagine", prezzo: 29.99 },
+  { nome: "Libro Completo", dettaglio: "con copertina e revisione", prezzo: 39.99 },
+];

@@ -36,7 +36,11 @@ export default function Tour({ steps: STEPS, ui, label }: { steps: PanelText["st
     if (i === null) return;
     const t = STEPS[i].target;
     const el = t ? document.querySelector<HTMLElement>(`[data-tour="${t}"]`) : null;
-    if (el) el.scrollIntoView({ block: "center", behavior: "auto" });
+    if (el) {
+      let d = el.closest("details");
+      while (d) { d.open = true; d = d.parentElement?.closest("details") ?? null; }
+      el.scrollIntoView({ block: "center", behavior: "auto" });
+    }
     measure();
     const onChange = () => measure();
     window.addEventListener("resize", onChange);

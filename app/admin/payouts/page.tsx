@@ -1,3 +1,4 @@
+import { MIN_PAYOUT_EUR } from "@/lib/config";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/supabase";
 import { eur } from "@/lib/commission";
@@ -14,7 +15,7 @@ export default async function Payouts({ searchParams }: { searchParams: { msg?: 
     supa.from("partners").select("id, name, email"),
   ]);
   const p = new Map((partners ?? []).map((x) => [x.id, x]));
-  const min = process.env.MIN_PAYOUT_EUR ?? "50";
+  const min = String(MIN_PAYOUT_EUR);
 
   return (
     <>

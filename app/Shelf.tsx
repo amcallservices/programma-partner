@@ -3,10 +3,10 @@
 import { useRef, useState } from "react";
 import { SITES } from "@/lib/sites";
 
-const HEIGHTS = [270, 330, 295, 345, 310];
+const HEIGHTS = [270, 330, 295, 345, 310, 285];
 // Su fondo scuro servono tinte più chiare: il dorso della community è blu notte, come lo sfondo.
 const SPINE: Record<string, string> = { com: "#4f46c8" };
-const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
+const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd", cds: "#fcd34d" };
 
 /** Cinque dorsi di libro, uno per sito: si clicca un dorso per leggere di cosa si tratta. */
 export default function Shelf() {
@@ -20,7 +20,7 @@ export default function Shelf() {
   }
   return (
     <div ref={root}>
-      <div className="shelf" role="group" aria-label="I cinque siti dell'ecosistema">
+      <div className="shelf" role="group" aria-label="I sei siti dell'ecosistema">
         {SITES.map((x, i) => (
           <button
             key={x.key}

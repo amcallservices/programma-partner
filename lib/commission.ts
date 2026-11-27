@@ -73,6 +73,7 @@ export function guessSite(text: string | null | undefined): string | null {
   if (t.includes("boost")) return "boost";
   if (t.includes("consulenza")) return "com";
   if (t.includes("liberamente")) return "lib";
+  if (t.includes("compagnia") || t.includes("ghostwriting") || t.includes("solo ebook") || t.includes("libro completo") || t.includes("ebook + copertina")) return "cds";
   if (t.includes("scrittore")) return "soft";
   return null;
 }

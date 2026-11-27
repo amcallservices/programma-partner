@@ -1,5 +1,6 @@
 "use server";
 
+import { MIN_PAYOUT_EUR } from "@/lib/config";
 import { randomBytes } from "crypto";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -194,7 +195,7 @@ export async function createPayouts() {
     cur.total += commissionCents(s);
     byPartner.set(s.partner_id, cur);
   }
-  const min = Math.round(Number(process.env.MIN_PAYOUT_EUR ?? "50") * 100);
+  const min = Math.round(MIN_PAYOUT_EUR * 100);
   const period = new Date().toISOString().slice(0, 7);
   let created = 0;
   for (const [partnerId, v] of byPartner) {

@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DETAIL, ESEMPI, SITES } from "@/lib/sites";
 
-const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd" };
+const LIGHT: Record<string, string> = { seo: "#2dd4bf", soft: "#60a5fa", lib: "#fb923c", com: "#a5a0ff", boost: "#c4b5fd", cds: "#fcd34d" };
 const GRAD: Record<string, string> = {
   seo: "linear-gradient(135deg,#0f766e,#134e4a)", soft: "linear-gradient(135deg,#2563eb,#1e3a8a)", lib: "linear-gradient(135deg,#ea580c,#9a3412)",
-  com: "linear-gradient(135deg,#4f46c8,#1b1464)", boost: "linear-gradient(135deg,#7c3aed,#4c1d95)",
+  com: "linear-gradient(135deg,#4f46c8,#1b1464)", boost: "linear-gradient(135deg,#7c3aed,#4c1d95)", cds: "linear-gradient(135deg,#374151,#111827)",
 };
 const PCT = 15;
 const eur = (n: number) => n.toLocaleString("it-IT", { style: "currency", currency: "EUR" });
@@ -80,7 +80,7 @@ export default function SiteSlider() {
   const s = SITES[i];
   const d = DETAIL[s.key];
   return (
-    <div ref={root} className="ss" aria-roledescription="carousel" aria-label="I cinque siti da promuovere"
+    <div ref={root} className="ss" aria-roledescription="carousel" aria-label="I sei siti da promuovere"
       onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}
       onKeyDown={(e) => { if (e.key === "ArrowRight") select(i + 1); if (e.key === "ArrowLeft") select(i - 1); }}>
       <div className="ss-main">
@@ -131,7 +131,7 @@ export default function SiteSlider() {
         </section>
         <section className="ss-card ss-partner">
           <h4>Come puoi guadagnare tu, partner</h4>
-          <p>Porti le persone con il tuo link personale: ricevi il {PCT}% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 50 €.</p>
+          <p>Porti le persone con il tuo link personale: ricevi il {PCT}% sul netto di ogni acquisto che fanno su {s.name}. Il compenso matura dopo 30 giorni e viene pagato ogni mese, dai 20 €.</p>
           <p className="ss-exh">Esempi con i pacchetti del sito</p>
           <ul className="ss-ex">
             {ESEMPI[s.key].map((e) => (

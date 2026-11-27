@@ -10,7 +10,7 @@ const FAQ: [string, string][] = [
   ["Cosa devo fare per iniziare?", "Scrivici: fissiamo una call in cui ti spieghiamo come funziona tutto, rispondiamo alle tue domande e, se vuoi iniziare, ti diamo accesso al tuo pannello personale con i link da condividere."],
   ["Perché il compenso matura dopo 30 giorni?", "È il tempo in cui un cliente può chiedere il rimborso. Se non c'è rimborso, il compenso diventa pagabile; se c'è, viene ridotto o annullato in proporzione."],
   ["E se un cliente compra con un'email diversa?", "Scrivici: controlliamo a mano e, se è una tua segnalazione, assegniamo la vendita al tuo pannello."],
-  ["Come mi pagate?", "Una volta al mese, con bonifico sull'IBAN che inserisci nel tuo profilo, quando il maturato raggiunge i 50 €. Sotto quella cifra l'importo si accumula."],
+  ["Come mi pagate?", "Una volta al mese, con bonifico sull'IBAN che inserisci nel tuo profilo, quando il maturato raggiunge i 20 €. Sotto quella cifra l'importo si accumula."],
   ["Posso vedere cosa ho guadagnato?", "Sì. Nel tuo pannello vedi click, email raccolte, vendite e compensi in tempo reale, con gli stati in attesa, maturato e pagato."],
 ];
 
@@ -26,7 +26,7 @@ const JSON_LD = {
     },
     {
       "@type": "Service", name: "Programma di affiliazione dell'ecosistema Self Publishing", serviceType: "Programma di affiliazione", provider: { "@id": `${SITE_URL}/#org` }, areaServed: "IT",
-      description: "Il partner condivide un link personale per ciascuno dei cinque siti e riceve il 15% sul netto di ogni acquisto. Il compenso matura dopo 30 giorni e viene pagato ogni mese con bonifico dai 50 €.",
+      description: "Il partner condivide un link personale per ciascuno dei sei siti e riceve il 15% sul netto di ogni acquisto. Il compenso matura dopo 30 giorni e viene pagato ogni mese con bonifico dai 20 €.",
     },
     { "@type": "FAQPage", mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
   ],
@@ -47,18 +47,36 @@ export default function Home() {
           </p>
           <p style={{ marginTop: 22, display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a className="btn cta" href={`https://wa.me/393282693777?text=${encodeURIComponent("Ti scrivo dal sito partner, voglio collaborare.")}`} target="_blank" rel="noopener noreferrer">Scrivici per iniziare</a>
+            <a className="btn ghost" href="/demo">Guarda una pagina partner di prova</a>
             <a className="btn ghost" href="#calcolo">Calcola quanto puoi guadagnare</a>
           </p>
         </div>
         <SiteSlider />
       </header>
 
+      <section className="promo-hl" id="promuovi" aria-labelledby="promuovi-t">
+        <h2 id="promuovi-t">Guadagni solo se promuovi il tuo link personale</h2>
+        <p>
+          Il link è tuo e lo diffondi tu, dove ci sono persone interessate. Più lo pubblichi, più persone arrivano e più acquisti si
+          collegano a te.
+        </p>
+        <ul className="chips" aria-label="Dove pubblicare il tuo link">
+          {["Facebook", "Instagram", "TikTok", "YouTube", "Gruppi e pagine", "Forum", "WhatsApp e Telegram", "Blog e newsletter", "Commenti e community"].map((c) => (
+            <li key={c}>{c}</li>
+          ))}
+        </ul>
+        <p className="promo-sub">Ti diamo anche immagini, video e testi già pronti: li scarichi dal tuo pannello e li pubblichi con il tuo link.</p>
+        <p style={{ margin: "16px 0 0", display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <a className="btn cta" href="/demo">Guarda una pagina partner di prova</a>
+        </p>
+      </section>
+
       <h2 id="come">Come funziona</h2>
       <div className="steps">
-        <div className="card" data-glow><h3>Ricevi il tuo pannello</h3><p className="muted" style={{ marginTop: 6 }}>Ti inviamo un indirizzo privato con i tuoi cinque link e un tour guidato che spiega ogni numero.</p></div>
-        <div className="card" data-glow><h3>Condividi i link</h3><p className="muted" style={{ marginTop: 6 }}>Chi li apre lascia la sua email e viene portato subito sul sito scelto.</p></div>
+        <div className="card" data-glow><h3>Ricevi il tuo pannello</h3><p className="muted" style={{ marginTop: 6 }}>Ti inviamo un indirizzo privato con i tuoi sei link e un tour guidato che spiega ogni numero.</p></div>
+        <div className="card" data-glow><h3>Pubblica i link</h3><p className="muted" style={{ marginTop: 6 }}>Sui social, nei forum e nei gruppi. Chi li apre lascia la sua email e viene portato subito sul sito scelto.</p></div>
         <div className="card" data-glow><h3>Le vendite si collegano a te</h3><p className="muted" style={{ marginTop: 6 }}>Riconosciamo l&apos;acquisto dall&apos;email. Vale il primo partner che ha segnalato quella persona, per 12 mesi.</p></div>
-        <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 15% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 50 €.</p></div>
+        <div className="card" data-glow><h3>Ricevi il compenso</h3><p className="muted" style={{ marginTop: 6 }}>Il 15% sul netto incassato, maturato dopo 30 giorni e pagato ogni mese dai 20 €.</p></div>
       </div>
 
       <h2 id="guarda">Guarda come funziona, passo passo</h2>
