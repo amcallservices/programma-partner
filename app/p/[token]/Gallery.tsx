@@ -68,6 +68,17 @@ export default function Gallery({ items, labels }: { items: GItem[]; labels: Lab
 
   const enc = encodeURIComponent;
 
+  /** Pulsanti social: i link web non possono allegare file, quindi scarico l'immagine e copio il testo; poi il social si apre da solo. */
+  function prep(i: GItem) {
+    const text = i.text ?? `${i.title} ${i.link}`;
+    void copyTxt(text);
+    if (i.dl) {
+      const a = document.createElement("a");
+      a.href = i.dl; a.download = i.fileName ?? ""; document.body.appendChild(a); a.click(); a.remove();
+    }
+    setMsg(i.dl ? labels.shareDesktop : labels.shareCopied);
+  }
+
   return (
     <>
       <div className="tgrid">
@@ -100,10 +111,10 @@ export default function Gallery({ items, labels }: { items: GItem[]; labels: Lab
             <p className="lb-msg" role="status" aria-live="polite">{msg}</p>
             <div className="sc-ch lb-ch" aria-label={labels.shareOn}>
               <span>{labels.shareOn}</span>
-              <a href={`https://wa.me/?text=${enc(cur.text ?? `${cur.title} ${cur.link}`)}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=${enc(cur.link)}`} target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href={`https://t.me/share/url?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer">Telegram</a>
-              <a href={`https://twitter.com/intent/tweet?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer">X</a>
+              <a href={`https://wa.me/?text=${enc(cur.text ?? `${cur.title} ${cur.link}`)}`} target="_blank" rel="noopener noreferrer" onClick={() => prep(cur)}>WhatsApp</a>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${enc(cur.link)}`} target="_blank" rel="noopener noreferrer" onClick={() => prep(cur)}>Facebook</a>
+              <a href={`https://t.me/share/url?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer" onClick={() => prep(cur)}>Telegram</a>
+              <a href={`https://twitter.com/intent/tweet?url=${enc(cur.link)}&text=${enc(cur.title)}`} target="_blank" rel="noopener noreferrer" onClick={() => prep(cur)}>X</a>
             </div>
           </div>
         )}
