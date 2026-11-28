@@ -18,7 +18,7 @@ const SALES = [
   { d: "18/11/2026", mail: "g***@gmail.com", what: "Scrittore Site, pacchetto Creator", price: 25, st: "in attesa" },
   { d: "09/11/2026", mail: "m***@libero.it", what: "Compagnia di Scrittura, Libro Completo", price: 39.99, st: "maturata" },
   { d: "27/10/2026", mail: "a***@gmail.com", what: "BOOST AI, 380 crediti", price: 24.9, st: "pagata" },
-  { d: "12/10/2026", mail: "s***@outlook.it", what: "Self Publishing Italia, consulenza 30 minuti", price: 200, st: "pagata" },
+  { d: "12/10/2026", mail: "s***@outlook.it", what: "Self Publishing Italia, consulenza 30 minuti", price: 20, st: "pagata" },
 ] as const;
 
 export default function Demo() {
