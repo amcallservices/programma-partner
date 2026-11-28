@@ -226,7 +226,7 @@ export const DETAIL: Record<string, { serve: string; fare: string[]; per: string
   },
 };
 
-/** Pacchetti e prezzi pubblici dei siti, usati negli esempi di compenso (verificati sulle pagine dei siti il 23/11/2026). */
+/** Pacchetti e prezzi pubblici dei siti, usati negli esempi di compenso (verificati sulle pagine dei siti il 28/11/2026). */
 export const ESEMPI: Record<string, { nome: string; dettaglio?: string; prezzo: number }[]> = {
   seo: [
     { nome: "Base", dettaglio: "150 crediti", prezzo: 10 },
@@ -245,9 +245,9 @@ export const ESEMPI: Record<string, { nome: string; dettaglio?: string; prezzo: 
     { nome: "Liberamente Plus", dettaglio: "3 libri al mese", prezzo: 4.99 },
   ],
   com: [
-    { nome: "Consulenza lampo", dettaglio: "30 minuti", prezzo: 200 },
-    { nome: "Consulenza completa", dettaglio: "60 minuti", prezzo: 350 },
-    { nome: "Consulenza approfondita", dettaglio: "90 minuti", prezzo: 500 },
+    { nome: "Consulenza lampo", dettaglio: "30 minuti", prezzo: 20 },
+    { nome: "Consulenza completa", dettaglio: "60 minuti", prezzo: 40 },
+    { nome: "Consulenza approfondita", dettaglio: "90 minuti", prezzo: 60 },
   ],
   boost: [
     { nome: "Starter", dettaglio: "150 crediti", prezzo: 9.9 },
